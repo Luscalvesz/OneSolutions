@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro One</title>
+</head>
+<style>
+    body {
+        background-image: url(https://portaliluminar.com.br/wp-content/uploads/2018/09/Blue-Background-HD-wallpapers-dark-blue-background-hd-wallpaper-12829.jpg);
+        background-attachment: fixed;
+        background-size: 135%;
+        background-repeat: no-repeat;
+    }
+</style>
+<body class="corpo">
+    <center>
+        <h2 class="título" style="color: #ffffff;">Simulador Financeiro One:</h2>
+        <h4 class="perguntas" style="color: #ffffff;">Quantos Quilowatts (kWh), os servidores de sua empresa consome por mês?<br>
+                                    Qual o custo mensal do seu sistema de refrigeração?<br>
+                                    Previsão mensal de energia e seus custos através do One!<br>
+                                    Faça já sua simulação!
+        </h4>
+        <span style="color: #ffffff;">Quantos servidores estarão ativos?</span><br><br>
+        <input id="data" placeholder="Digite aqui!"style="text-align: center"><br><br>
+        <span style="color: #ffffff;">Quantos equipamentos de refrigeração serão utilizados?</span><br><br>
+        <input id="refri" placeholder="Digite aqui!" style="text-align: center"><br><br>
+        <button id="quilo" onclick="consumoEnergia()">Consumo</button>
+        <button id="reais" onclick="custoEnergia()">Custo</button>
+        <button id="conversao" onclick="oneEconomia()">One</button>
+        <div style="color: #ffffff;" id="resultado1"> </div>
+        <div style="color: #ffffff;" id="resultado2"> </div>
+        <div style="color: #ffffff;" id="resultado3"> </div>
+    </center>
+</body>
+</html>
+<script>
+
+    function consumoEnergia() {
+        var quilo1 = data.value * 850 * 24 * 30 / 1000;
+        var quilo2 = refri.value * 1580 * 24 * 30 / 1000;
+        var quilo3 = Number(quilo1) + Number(quilo2);
+        resultado1.innerHTML = `<h3> Seus servidores consumirão, cerca de ${quilo1.toFixed(2)} kWh, e<br>
+                        Seus parelhos de refrigeração, ficará na faixa de ${quilo2.toFixed(2)} kWh<br>
+                                        Juntos o consumo médio será de ${quilo3.toFixed(2)} kWh ao mês.</h3>`;
+    };
+
+    function custoEnergia() {
+        var consumo = data.value * 850 * 24 * 30 / 1000 * 0.80;
+        var custo = refri.value * 1580 * 24 * 30 / 1000 * 0.80;
+        var total = Number(consumo) + Number(custo);
+        resultado2.innerHTML = `<h3> O custo desta operação, para
+                                seus servidores, será de R$ ${consumo.toFixed(2)}, e os<br>
+                                Seus equipamentos de refrigeração, de R$ ${custo.toFixed(2)},<br>
+                                Juntos custarão R$${total.toFixed(2)} por mês.</h3>`;
+    };
+
+    function oneEconomia() {
+        var conversao1 = data.value * 850 * 24 * 30 / 1000 * 0.80;
+        var conversao2 = refri.value * 1580 * 24 * 30 / 1000 * 0.80;
+        var conversao3 = Number(conversao1) + Number(conversao2);
+        var conversao4 = conversao3 * 0.40;
+        var conversao5 = conversao3 - conversao4;
+        resultado3.innerHTML = `<h3>O benefício será uma econômia de R$ ${conversao4.toFixed(2)},<br>
+                                que deverá ser desembolsado, por apenas R$ ${conversao5.toFixed(2)} por mês </h1>
+                                (Economizando em cerca de 40% da sua operação!)`;
+    };
+</script>

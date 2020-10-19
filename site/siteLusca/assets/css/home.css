@@ -1,0 +1,121 @@
+.main{
+    display: flex;/*definindo o display como flex*/
+    flex-direction: column;/*definindo a direção do flex para coluna */
+    justify-content: center;/*alinhando verticalmente */
+    height: 100vh;/*definindo que a altura vai ter 90% do tamanho da tela*/
+    padding: 0 10%;/*adicionando padding de 10% para esquerda/direita*/
+}
+.main-box{
+    background: #04011edb;/*definindo a cor de fundo do elemento*/
+    width: 80%;/*definindo que a largura vai tomar 80% do pai */
+    height: 70%;/*definindo que o tamanho vai tomar 80% do pai*/
+    display: flex;/*definindo o display como flex*/
+    flex-direction: column;/*definindo a direção do flex para coluna*/
+    justify-content: space-around;/*definindo o espaçamento*/
+    align-items: center;/*alinhando horizontalmente*/
+    border-radius: 20px;/*arredondando a borda*/
+}
+.main-title{
+    color: white;/*definindo a cor do texto como branco*/
+    letter-spacing: 2px;/*adicionando 2px de espaço entre as letras */
+    transition: 0.5s;/*definindo a transição do elemento para 0.5segundos*/
+    cursor: default;/*definindo o cursor padrão*/
+    margin-bottom: 50px;/*adicionando 50px de margin para baixo*/
+    font-size: 65px;/*defindo 65px de tamanho da fonte*/
+}
+.main-title:hover{
+    letter-spacing: 4px;/*adicionando 4px de espaço entre as letras*/
+}
+.main-text{
+    width: 450px;/*definindo a largura do elemento para 450px*/
+    font-size: 25px;/*definindo 25px de tamanho da fonte*/
+    color: white;/*definindo a cor do texto como branco*/
+}
+.main-box-button{
+    border-radius: 20px;/*arredondando a borda */
+    color: white;/*definindo a cor do texto como branco*/
+    background: darkblue;/*definindo a cor de fundo*/
+    border: 2px solid black;/*criando borda no elemento*/
+    padding: 5px 25px;/*adicionando padding de 5px para cima/baixo e 25px para esquerda/direita */
+    font-size: 20px;/*definindo o tamanho da fonte para 20px*/
+    text-transform: uppercase;/*definindo que o texto vai ser maiúsculo*/
+    letter-spacing: 2px;/*definindo 2px de espaço entre as letras*/
+    cursor: pointer;/*definindo o ponteiro do mouse com a "mãozinha"*/
+    outline: none;/*retirando as "bordas pretas" quando clica no elemento */
+    transition: 0.5s;/*definindo a transição do elemento para 0.5 segundos */
+}
+.main-box-button:hover{
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);/*adicionando sombra no elemento */
+    background: #01124152;/*definindo a cor de fundo*/
+}
+.main-boxL, .main-boxR{
+    display: flex;/*definindo o display como flex*/
+}
+.main-boxL-img, .main-boxR-img{
+    height: 50px;/*definindo 50px de altura*/
+    padding: 0 25px;/*adicionando padding de 25px para a direita/esquerda */
+}
+.main-boxL-text, .main-boxR-text{
+    padding: 0 15px;/*adicionando padding de 15px para a direita/esquerda */
+    color: white;/*definindo a cor do texto para branco*/
+    font-size: 20px;/*definindo o tamanho da fonte para 20px*/
+}
+
+.data{
+    background: #000e33;/*definindo a cor de fundo do elemento*/
+    display: flex;/*definindo o display como flex*/
+    justify-content: space-between;/*alinhando horizontalmente*/
+    align-items: center;/*alinhando verticalmente*/
+    height: 90vh;/*definindo 90vh de altura para o elemento*/
+    padding: 0 10%;/*adicionando padding de 10% para esquerda/direita*/
+}
+.thermo{
+    background: #000A25;/*definindo a cor de fundo do elemento*/
+    display: flex;/*definindo o display como flex*/
+    justify-content: space-between;/*alinhando horizontalmente*/
+    align-items: center;/*alinhando verticalmente*/
+    height: 90vh;/*definindo altura do elemento*/
+    padding: 0 10%;/*adicionando padding de 10% para esquerda/direita*/
+}
+.graph{
+    background: #000e33;/*definindo a cor de fundo do elemento*/
+    display: flex;/*definindo o display como flex*/
+    justify-content: space-between;/*alinhando horizontalmente*/
+    align-items: center;/*alinhando verticalmente*/
+    height: 90vh;/*definindo altura do elemento*/
+    padding: 0 10%;/*adicionando padding de 10% para esquerda/direita*/
+}
+.data-box, .thermo-box, .graph-box{
+    display: flex;/*definindo o display como flex*/
+    flex-direction: column;/*definindo a direção do flex*/
+    align-items: center;/*alinhando horizontalmente*/
+}
+.data-box-title, .thermo-box-title, .graph-box-title{
+    color: white;/*definindo a cor da fonte*/
+    letter-spacing: 3px;/*adicionando 3px de espaço entre as letras*/
+    font-size: 30px;/*definindo 30px de tamanho da fonte*/
+}
+.data-box-button, .thermo-box-button, .graph-box-button{
+    margin-top: 50px;/*adicionando 50px de margin para cima*/
+    color: white;/*definindo a cor da fonte*/
+    background: darkblue;/*definindo a cor de fundo*/
+    border: 2px solid black;/*adicionando uma bordad de 2px sólida, preta*/
+    border-radius: 20px;/*arredondando a borda*/
+    padding: 5px 25px;/*adicionando padding de 5px para cima/baixo e 25px para direita/esquerda*/
+    font-size: 20px;/*definindo o tamanho da fonte*/
+    letter-spacing: 3px;/*adicionando 3px de espaço entre as letras*/
+    cursor: pointer;/*definindo o ponteiro do mouse como a "mãozinha"*/
+    outline: none;/*removendo as bordas pretas*/
+    transition: 0.5s;/*adicionando uma transição de 0.5 segundos*/
+    text-transform: uppercase;/*definindo o texto como maiúsculo*/
+}
+.data-box-button:hover, .thermo-box-button:hover, .graph-box-button:hover{
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);/*adicionando sombra no elemento*/
+    background: #01124152;/*definindo a cor de fundo*/
+
+}
+.data-img, .thermo-img, .graph-img{
+    width: 400px;/*definindo 400px de largura*/
+    margin-left: 100px;/*adicionando 100px de margem para a esquerda*/
+    border-radius: 20px;/*arredondando a borda*/
+}

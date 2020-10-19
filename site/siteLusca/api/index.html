@@ -1,0 +1,158 @@
+
+<!doctype html>
+<html>
+
+<head>
+	<title>Line Chart</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+	<script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+	</style>
+	<link rel="stylesheet" href="../assets/css/header.css">
+	<link rel="stylesheet" href="../assets/css/api.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body class="body">
+	<header class="header">
+        <div class="header-box">
+            <img class="header-box-img" src="../assets/img/logoOne.png" alt="logo">
+        </div>
+        <ul class="header-ul">
+            <a href="./home.html">
+                <li class="header-ul-li">home</li>
+            </a>
+            <a href="#">
+                <li class="header-ul-li">sobre</li>
+            </a>
+            <a href="#">
+                <li class="header-ul-li">contato</li>
+            </a>
+        </ul>
+	</header>
+	<h1 class="title">ONE - IOT Solutions</h1>
+	<section class="media">
+		<h2>Média: <label id='average'>0.00</label></h2>
+		<h2>Média Hora: <label id='averageHour'>0.00</label></h2>
+	</section>
+	<section class="table">
+		<div class="table-box">
+			<canvas id="chart"></canvas>
+		</div>
+	<section>
+
+	<!-- <script>
+		var context = document.getElementById("chart").getContext("2d");
+		context.canvas.width = 800;
+		context.canvas.height = 300;
+        
+        var configuration = {
+			type: 'line',
+			data: {
+				datasets: [{
+					label: "Temperatura   x   Tempo",
+					border: "2px solid",
+					type: 'line',
+					backgroundColor: '#000000c4',
+					borderColor: 'grey',
+					borderWidth: 3,
+				}]
+			},
+			options: {
+				legend: {
+					labels: {
+						fontColor: '#fff'
+					}
+				},
+				scales: {
+					xAxes: [{
+						gridLines: { color: "white"},
+						distribution: 'series',
+						scaleLabel: {
+							display: true,
+							labelString: 'Tempo (segundos)',
+							fontColor: '#fff'
+                        },
+                        ticks: {
+                            beginAtZero:true,
+							fontColor: '#fff'
+                        }
+					}],
+					yAxes: [{
+						gridLines: { color: "white"},
+						scaleLabel: {
+							display: true,
+							labelString: 'Temperatura',
+							fontColor: '#fff'
+                        },
+                        ticks: {
+                            beginAtZero:true,
+							fontColor: '#fff'
+                        }
+					}]
+				},
+				animation: {
+					duration: 0.5
+				}
+			}
+        };
+
+		var chart = new Chart(context, configuration);
+
+        //Função para obter os dados de temperatura do server
+        //Seria mais interessante fazer isso com WebSocket, porém para fins academicos, os dados serão atualizados via HTTP
+        
+        //Esse atributo dentro do contexto serve para saber qual foi o último índice processado, assim eliminado os outros elementos na
+        //hora de montar/atualizar o gráfico
+        this.lastIndexTemp = 0;
+        this.time = 0;
+
+        function get_data(){
+
+            var http = new XMLHttpRequest();
+            http.open('GET', 'http://localhost:5000/api', false);
+            http.send(null);        
+			
+            var obj = JSON.parse(http.responseText);
+			console.log(obj)
+            if (obj.data.length == 0){
+                return;
+            }
+
+            var _lastIndexTemp = this.lastIndexTemp;
+            this.lastIndexTemp = obj.data.length;
+            listTemp = obj.data.slice(_lastIndexTemp);
+
+            listTemp.forEach(data => {
+                //Máximo de 60 itens exibidos no gráfico
+                if (chart.data.labels.length == 10 && chart.data.datasets[0].data.length == 10){
+                    chart.data.labels.shift();
+                    chart.data.datasets[0].data.shift();
+                }
+
+                chart.data.labels.push(this.time++);
+                chart.data.datasets[0].data.push(parseFloat(data));
+                chart.update();
+			});
+			
+			document.getElementById('average').textContent = obj.average;
+			document.getElementById('averageHour').textContent = obj.averageHour;
+		} 
+		
+		get_data();
+
+        setInterval(() => {
+            get_data();
+        }, 1000);
+
+	</script> -->
+</body>
+
+</html>
+<script src="index.js"></script>

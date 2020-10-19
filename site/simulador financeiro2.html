@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+<style>
+    body{ 
+	background-image:url(https://portaliluminar.com.br/wp-content/uploads/2018/09/Blue-Background-HD-wallpapers-dark-blue-background-hd-wallpaper-12829.jpg);">
+	background-attachment:fixed;
+	background-size:135%;
+	background-repeat:no-repeat;	
+    }
+</style>
+<body>
+<center>
+    <h2 style="color: #ffffff;">Simulador Financeiro para saber:</h2> 
+    <h3 style="color: #ffffff;">Quantos watts e quilowatt gasta por mês (média de acordo com dados do slide)<br>
+        Quantos reais gasta por mês(média de acordo com dados do slide)<br>
+        Quanto você terá de desconto (hipoteticamente)<br>
+        Quanto você irá pagar usando nosso serviço (hipoteticamente)
+        </h3> 
+       
+<br>
+<br>
+<span style="color: #ffffff;">Digite aqui quantos DataCenters ativos tem </span><br>
+<br>
+    <input id="data" placeholder="Digite a quantidade de Centers">
+<br>
+<br>
+<span style="color: #ffffff;">
+    Digite aqui quantos Aparelhos de Refrigeração ativos tem </span>
+<br>
+<br>
+    <input id="refri" placeholder="Digite a quantidade de Aparelhos">
+<br>
+<br>
+
+    <button id="calculo" onclick="calculo()">Watts</button>
+    <button id="quilo" onclick="quilo()">Quilowatt</button>
+    <button id="reais" onclick="reais()">Reais</button>
+    <button id="conversao" onclick="conversao()">Economizar</button>
+    <span style="color: #ffffff;" id="resultado"> </span> 
+</center>  
+ 
+</body>
+</html>
+
+<script>
+
+function calculo(){
+var calculo1 = data.value * 850 * 24 * 30
+var calculo2 = refri.value * 1580 * 24 * 30
+var calculo3 = Number(calculo1) + Number(calculo2)
+resultado.innerHTML  = `<h1> Seus DataCenters gastam ${calculo1} Watts e seus Aparelhos de 
+Refrigeração gastam ${calculo2} Watts e juntos gastam ${calculo3} Watts por mês`
+}
+
+function quilo(){
+var quilo1 = data.value * 850 * 24 * 30 / 1000
+var quilo2 = refri.value * 1580 * 24 * 30 / 1000
+var quilo3 = Number(quilo1) + Number(quilo2)
+resultado.innerHTML  = `<h1> Seus DataCenters gastam ${quilo1} KW e seus Aparelhos de 
+Refrigeração gastam ${quilo2} KW e juntos gastam ${quilo3} KW por mês`
+}
+
+function reais(){
+var reais1 = data.value * 850 * 24 * 30 / 1000 * 0.80
+var reais2 = refri.value * 1580 * 24 * 30 / 1000 * 0.80
+var reais3 = Number(reais1) + Number(reais2)
+resultado.innerHTML  = `<h1> Seus DataCenters gastam R$ ${reais1} e seus Aparelhos de Refrigeração
+gastam R$ ${reais2} e juntos gastam R$${reais3} por mês`
+}
+
+function conversao(){
+var conversao1 = data.value * 850 * 24 * 30 / 1000 * 0.80
+var conversao2 = refri.value * 1580 * 24 * 30 / 1000 * 0.80
+var conversao3 = Number(conversao1) + Number(conversao2)
+var conversao4 = conversao3 * 0.40
+var conversao5 = conversao3 - conversao4
+resultado.innerHTML  = `<h1 >Você terá um desconto de R$ ${conversao4} , e irá pagar R$ ${conversao5} por mês </h1> 
+<br> <br>
+(valor hipotetico do desconto é de 40%) `
+}
+</script>

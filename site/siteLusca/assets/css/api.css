@@ -1,0 +1,32 @@
+.title{
+    color: white;/*definindo a cor do texto como branco*/
+    letter-spacing: 2px;/*adicionando 2px de espaço entre as letras */
+    transition: 0.5s;/*definindo a transição do elemento para 0.5segundos*/
+    cursor: default;/*definindo o cursor padrão*/
+    text-align: center;/*alinhando o texto no centro*/
+    padding-top: 10vh;/*adicionando 1vh de padding para cima*/
+    font-size: 60px;/*definindo o tamanho da fonte*/
+}
+.title:hover{
+    letter-spacing: 4px;/*definindo 4px de espaçamento entre as letras*/
+}
+.media{
+    display: flex;/*definindo o display do elemento como flex*/
+    justify-content: center;/*alinhando horizontalmente */
+}
+.media h2{
+    color: white;/*definindo a cor do texto para branco*/
+    margin: 0 10px;/*adicionando 10px de margin para a esquerda e direita*/
+}
+.table{
+    display: flex;/*definindo o display do elemento como flex*/
+    justify-content: center;/*alinhando horizontalmente */
+    height: 70vh;/*definindo que a altura vai possuir 70% do tamanho da tela */
+    align-items: center;/*alinhando verticalmente */
+}
+.table-box{
+    width: 80%;/*definindo a largura do elemento para tomar 80% da tela*/
+    background: #000318e3;/*definindo a cor de fundo do elemento*/
+    border-radius: 20px;/*arredondando a borda */
+    padding: 5px 25px;/*adicionando 5px de padding para cima/baixo e 25 para direita/esquerda */
+}
