@@ -6,7 +6,7 @@
     cursor: default;/*definindo o cursor padrão*/
     text-align: center;/*alinhando o texto no centro*/
     padding-top: 10vh;/*adicionando 10vh de padding para cima*/
-    font-size: 60px;/*definindo o tamanho da fonte*/
+    font-size: 40px;/*definindo o tamanho da fonte*/
 }
 .title:hover{
     letter-spacing: 4px;/*definindo 4px de espaçamento entre as letras*/
