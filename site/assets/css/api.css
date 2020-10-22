@@ -1,10 +1,11 @@
+
 .title{
     color: white;/*definindo a cor do texto como branco*/
     letter-spacing: 2px;/*adicionando 2px de espaço entre as letras */
     transition: 0.5s;/*definindo a transição do elemento para 0.5segundos*/
     cursor: default;/*definindo o cursor padrão*/
     text-align: center;/*alinhando o texto no centro*/
-    padding-top: 10vh;/*adicionando 1vh de padding para cima*/
+    padding-top: 10vh;/*adicionando 10vh de padding para cima*/
     font-size: 60px;/*definindo o tamanho da fonte*/
 }
 .title:hover{
@@ -29,4 +30,9 @@
     background: #000318e3;/*definindo a cor de fundo do elemento*/
     border-radius: 20px;/*arredondando a borda */
     padding: 5px 25px;/*adicionando 5px de padding para cima/baixo e 25 para direita/esquerda */
+}
+.imgFundo{
+    position: fixed;/*definindo a posição do elemento como fixa*/
+    width: 114%;/*definindo largura do elemento (114% para se adequar a views maiores (foge das boas práticas))*/
+    z-index: -1;/*colocando elemento uma "camada" para trás*/
 }
