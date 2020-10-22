@@ -5,16 +5,20 @@
     height: 100vh;/*definindo que a altura vai ter 90% do tamanho da tela*/
     padding: 0 10%;/*adicionando padding de 10% para esquerda/direita*/
 }
+
 .main-box{
-    background: #04011edb;/*definindo a cor de fundo do elemento*/
-    width: 80%;/*definindo que a largura vai tomar 80% do pai */
-    height: 70%;/*definindo que o tamanho vai tomar 80% do pai*/
     display: flex;/*definindo o display como flex*/
-    flex-direction: column;/*definindo a direção do flex para coluna*/
-    justify-content: space-around;/*definindo o espaçamento*/
+    justify-content: center;/*definindo o espaçamento*/
     align-items: center;/*alinhando horizontalmente*/
-    border-radius: 20px;/*arredondando a borda*/
 }
+.main-box-arrow{
+    transform: rotate(90deg);
+    width: 50px;
+    position: absolute;
+    bottom: 100px;
+    animation: seta 1s infinite;
+}
+
 .main-title{
     color: white;/*definindo a cor do texto como branco*/
     letter-spacing: 2px;/*adicionando 2px de espaço entre as letras */
@@ -31,6 +35,7 @@
     font-size: 25px;/*definindo 25px de tamanho da fonte*/
     color: white;/*definindo a cor do texto como branco*/
 }
+
 .main-box-button{
     border-radius: 20px;/*arredondando a borda */
     color: white;/*definindo a cor do texto como branco*/
@@ -60,7 +65,6 @@
     color: white;/*definindo a cor do texto para branco*/
     font-size: 20px;/*definindo o tamanho da fonte para 20px*/
 }
-
 .data{
     background: #000e33;/*definindo a cor de fundo do elemento*/
     display: flex;/*definindo o display como flex*/
@@ -85,17 +89,41 @@
     height: 90vh;/*definindo altura do elemento*/
     padding: 0 10%;/*adicionando padding de 10% para esquerda/direita*/
 }
+.news{
+    background: #000A25;/*definindo a cor de fundo do elemento*/
+    display: flex;/*definindo o display como flex*/
+    justify-content: center;/*alinhando horizontalmente*/
+    align-items: center;/*alinhando verticalmente*/
+    padding: 10%;
+}
+.news-box{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.news-box-subtitle{
+    color: white;
+    margin: 25px 0;
+}
+.news-box-input{
+    width: 300px;
+    padding: 5px;
+    border-radius: 25px;
+    border: 2px solid black;
+    outline: none;
+}
 .data-box, .thermo-box, .graph-box{
     display: flex;/*definindo o display como flex*/
     flex-direction: column;/*definindo a direção do flex*/
     align-items: center;/*alinhando horizontalmente*/
 }
-.data-box-title, .thermo-box-title, .graph-box-title{
+.data-box-title, .thermo-box-title, .graph-box-title, .news-box-title{
     color: white;/*definindo a cor da fonte*/
     letter-spacing: 3px;/*adicionando 3px de espaço entre as letras*/
     font-size: 30px;/*definindo 30px de tamanho da fonte*/
 }
-.data-box-button, .thermo-box-button, .graph-box-button{
+.data-box-button, .thermo-box-button, .graph-box-button, .news-box-button{
     margin-top: 50px;/*adicionando 50px de margin para cima*/
     color: white;/*definindo a cor da fonte*/
     background: darkblue;/*definindo a cor de fundo*/
@@ -109,7 +137,7 @@
     transition: 0.5s;/*adicionando uma transição de 0.5 segundos*/
     text-transform: uppercase;/*definindo o texto como maiúsculo*/
 }
-.data-box-button:hover, .thermo-box-button:hover, .graph-box-button:hover{
+.data-box-button:hover, .thermo-box-button:hover, .graph-box-button:hover, .news-box-button:hover{
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);/*adicionando sombra no elemento*/
     background: #01124152;/*definindo a cor de fundo*/
 
@@ -118,4 +146,17 @@
     width: 400px;/*definindo 400px de largura*/
     margin-left: 100px;/*adicionando 100px de margem para a esquerda*/
     border-radius: 20px;/*arredondando a borda*/
+}
+
+
+@keyframes seta {
+    0%{
+        bottom: 80px;
+    }
+    50%{
+        bottom: 100px;
+    }
+    100%{
+        bottom: 80px;
+    }
 }
