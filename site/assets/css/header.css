@@ -54,3 +54,12 @@
 .header-ul-li:hover{/*criando um hover */
     border-bottom: 1px solid white; /*adicionando uma borda branca abaixo do elemento */
 }
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background: blue;
+}
+::-webkit-scrollbar-track{
+    background: black;
+}

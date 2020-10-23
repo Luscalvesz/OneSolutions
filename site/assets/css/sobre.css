@@ -18,7 +18,7 @@
 }
 .main-box-subtitle{
     color: white;
-    margin: 50px 0;
+    margin: 30px 0;
     font-size: 25px;
     text-align: center;
 }
@@ -40,24 +40,7 @@
     background: #01124152;/*definindo a cor de fundo*/
 }
 .main-box-img{
-    width: 350px;
-    animation: grau 2s linear infinite;
-    position: absolute;
-    left: 500px;
+    width: 700px;
+    position: relative;
+    bottom: 25px;
 }
-
-@keyframes grau {
-    0%{
-        transform: rotate(0deg);
-        left: 500px;
-    }
-    50%{
-        transform: rotate(-45deg);
-        left: 700px;
-    }
-    100%{
-        transform: rotate(0deg);
-        left: 900px;
-    }
-}
-
