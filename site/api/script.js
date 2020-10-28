@@ -8,7 +8,6 @@
 			data: {
         datasets: [{
         label: "Temperatura x Tempo",
-					type: 'line',
 					borderColor: '#F02B24',
 					borderWidth: 3,
 					backgroundColor: '#000000a3'
@@ -61,7 +60,7 @@
 		function get_data() {
 
 			var http = new XMLHttpRequest();
-			http.open('GET', 'http://localhost:3000/api', false);
+			http.open('GET', 'http://localhost:5000/api', false);
 			http.send(null);
 
 			var obj = JSON.parse(http.responseText);
@@ -100,7 +99,6 @@
 			data: {
         datasets: [{
         label: "Umidade x Tempo",
-					type: 'line',
 					borderWidth: 3,
 					borderColor: '#ff6200',
 					backgroundColor: '#000000a3',
@@ -152,7 +150,7 @@
 		function get_dataHumidity() {
 
 			var http = new XMLHttpRequest();
-			http.open('GET', 'http://localhost:3000/api/humidity', false);
+			http.open('GET', 'http://localhost:5000/api/humidity', false);
 			http.send(null);
 
 			var obj = JSON.parse(http.responseText);
