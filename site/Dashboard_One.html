@@ -23,7 +23,9 @@
 	<img class="imgFundo" src="../site/assets/img/background.png">
 	<header class="header">
 		<div class="header-box">
+			<a href="../site/home.html">
 			<img class="header-box-img" src="../site/assets/img/logoOne.png" alt="logo">
+		</a>
 		</div>
 		<ul class="header-ul">
 			<a href="../site/sobre.html">
@@ -260,20 +262,23 @@
 		];
 
 		var contador = 0;
-
+		var contador2 = 0;
 		// registros.length é a quantidade de itens em "registros"
 		while (contador < registros_temp.length) {
 
 			config_temp.data.labels.push(registros_temp[contador].momento);  // incluir um novo momento
-
-			config_umid.data.labels.push(registros_umid[contador].momento);
-
 			config_temp.data.datasets[0].data.push(registros_temp[contador].leitura);  // incluir uma nova leitura
-
-			config_umid.data.datasets[0].data.push(registros_umid[contador].leitura);  // incluir uma nova leitura
 
 			contador++;
 		}
+		while (contador2 < registros_umid.length) {
+
+			config_umid.data.labels.push(registros_umid[contador2].momento);
+			config_umid.data.datasets[0].data.push(registros_umid[contador2].leitura);  // incluir uma nova leitura
+
+			contador2++;
+		}
+
 
 	}
 
@@ -292,6 +297,10 @@
 				momento: momento,
 				leitura: sortear_Temp()
 			};
+			var novoRegistro2 = {
+				momento: momento,
+				leitura: sortear_umid()
+			}
 
 			// tirando e colocando valores no gráfico
 			config_temp.data.labels.shift(); // apagar o primeiro
@@ -299,13 +308,19 @@
 			config_temp.data.datasets[0].data.shift();  // apagar o primeiro
 			config_temp.data.datasets[0].data.push(novoRegistro.leitura); // incluir uma nova leitura
 
+			config_umid.data.labels.shift(); // apagar o primeiro
+			config_umid.data.labels.push(novoRegistro2.momento); // incluir um novo momento
+			config_umid.data.datasets[0].data.shift();  // apagar o primeiro
+			config_umid.data.datasets[0].data.push(novoRegistro2.leitura); // incluir uma nova 
+
 			// Atualiza o gráfico
 			window.graficoLinha.update();
+			window.graficoLinha_2.update();
 
 			// agendar a chamada da mesma função para daqui a 7 segundos
 			receberNovasLeituras();
 
-		}, 7000); // 7000 ms -> 7 segundos
+		}, 10000); // 7000 ms -> 7 segundos
 	}
 
 	function plotarGrafico() {
@@ -320,7 +335,7 @@
 		window.graficoLinha_2 = new Chart(ctx2, config_umid)
 
 		// função que agenda a recuperação da última leitura para daqui a 7 segundos
-		//receberNovasLeituras();
+		receberNovasLeituras();
 	}
 
 	// indicando que a função "plotarGrafico" será invocada assim que a página carregar
