@@ -16,7 +16,7 @@
     width: 50px;
     position: absolute;
     bottom: 100px;
-    animation: seta 1s infinite;
+    animation: seta 1s infinite; /*chamando keyframe. Passando nome, tempo de duração e que vai ser infinito*/
 }
 
 .main-title{
@@ -89,8 +89,17 @@
     height: 90vh;/*definindo altura do elemento*/
     padding: 0 10%;/*adicionando padding de 10% para esquerda/direita*/
 }
-.news{
+.calc{
     background: #000A25;/*definindo a cor de fundo do elemento*/
+    display: flex;/*definindo o display como flex*/
+    flex-direction: column;/*definindo a diração do flex*/
+    justify-content: center;/*alinhando horizontalmente*/
+    align-items: center;/*alinhando verticalmente*/
+    height: 90vh;/*definindo altura do elemento*/
+    padding: 0 10%;/*adicionando padding de 10% para esquerda/direita*/
+}
+.news{
+    background: #000e33;/*definindo a cor de fundo do elemento*/
     display: flex;/*definindo o display como flex*/
     justify-content: center;/*alinhando horizontalmente*/
     align-items: center;/*alinhando verticalmente*/
@@ -102,28 +111,41 @@
     flex-direction: column;
     align-items: center;
 }
-.news-box-subtitle{
+.news-box-subtitle, .calc-subtitle{
     color: white;
     margin: 25px 0;
+    font-size: 20px;
+    text-align: center;
 }
-.news-box-input{
+.news-box-input, .calc-input{
     width: 300px;
-    padding: 5px;
+    padding: 10px;
     border-radius: 25px;
     border: 2px solid black;
     outline: none;
+}
+.calc-box{
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
+}
+.calc-resp{
+    color: white;/*definindo a cor da fonte*/
+    font-size: 18px;/*definindo 18px de tamanho da fonte*/
+    margin: 10px 0;/*adicionando margin de 10px para cima/baixo*/
+    text-align: center;/*alinhando texto no centro*/
 }
 .data-box, .thermo-box, .graph-box{
     display: flex;/*definindo o display como flex*/
     flex-direction: column;/*definindo a direção do flex*/
     align-items: center;/*alinhando horizontalmente*/
 }
-.data-box-title, .thermo-box-title, .graph-box-title, .news-box-title{
+.data-box-title, .thermo-box-title, .graph-box-title, .news-box-title, .calc-title{
     color: white;/*definindo a cor da fonte*/
     letter-spacing: 3px;/*adicionando 3px de espaço entre as letras*/
     font-size: 30px;/*definindo 30px de tamanho da fonte*/
 }
-.data-box-button, .thermo-box-button, .graph-box-button, .news-box-button{
+.data-box-button, .thermo-box-button, .graph-box-button, .news-box-button, .calc-box-button{
     margin-top: 50px;/*adicionando 50px de margin para cima*/
     color: white;/*definindo a cor da fonte*/
     background: darkblue;/*definindo a cor de fundo*/
@@ -137,26 +159,23 @@
     transition: 0.5s;/*adicionando uma transição de 0.5 segundos*/
     text-transform: uppercase;/*definindo o texto como maiúsculo*/
 }
-.data-box-button:hover, .thermo-box-button:hover, .graph-box-button:hover, .news-box-button:hover{
+.data-box-button:hover, .thermo-box-button:hover, .graph-box-button:hover, .news-box-button:hover, .calc-box-button:hover{
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);/*adicionando sombra no elemento*/
     background: #01124152;/*definindo a cor de fundo*/
-
 }
 .data-img, .thermo-img, .graph-img{
     width: 400px;/*definindo 400px de largura*/
     margin-left: 100px;/*adicionando 100px de margem para a esquerda*/
     border-radius: 20px;/*arredondando a borda*/
 }
-
-
-@keyframes seta {
-    0%{
-        bottom: 80px;
+@keyframes seta {/*criando keyframe de movimento para a seta*/
+    0%{/*primeiro frame*/
+        bottom: 80px;/*posicionando a seta 80px a partir do final*/
     }
-    50%{
-        bottom: 100px;
+    50%{/*segundo frame*/
+        bottom: 100px;/*posicionando a seta 100px a partir do final*/
     }
-    100%{
-        bottom: 80px;
+    100%{/*terceiro frame*/
+        bottom: 80px;/*posicionando a seta 80px a partir do final*/
     }
 }
