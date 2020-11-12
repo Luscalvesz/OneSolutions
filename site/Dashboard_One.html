@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="../site/assets/css/footer.css">
 	<link rel="stylesheet" href="../site/assets/css/api.css">
 	<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
 </head>
 
 <body class="body">
@@ -333,6 +334,8 @@
 
 		var ctx2 = grafico_umid.getContext('2d');
 		window.graficoLinha_2 = new Chart(ctx2, config_umid)
+
+		Chart.defaults.global.defaultFontColor = '#fff'
 
 		// função que agenda a recuperação da última leitura para daqui a 7 segundos
 		receberNovasLeituras();
