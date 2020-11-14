@@ -29,7 +29,7 @@
     text-transform: uppercase;/*definindo a fonte maiúscula*/
     color: white;/*definindo a cor da fonte como branco*/
     letter-spacing: 2px;/*definindo 2px de espaçamento entre as letras*/
-    margin-bottom: 25px;/*adicionando 25px de margem para baixo*/
+    margin-bottom: 10px;/*adicionando 25px de margem para baixo*/
 }
 .main-box-login, .main-box-cad{
     display: flex;/*definindo o display como flex*/
@@ -37,16 +37,24 @@
     justify-content: center;/*alinhando verticalmente */
     align-items: center;/*alinhando horizontalmente */
 }
+.main-box-text {
+    color: white;
+    font-size: 20px;
+    margin-left: -150px;
+}
+.main-box-text-cad{
+    color: white;
+}
 .main-box-login-input, .main-box-cad-input{
-    margin: 10px 0; /*adicionando 10px de margem para cima/baixo */
+    margin-bottom: 10px; /*adicionando 10px de margem para cima/baixo */
     padding: 5px 10px;/*adicionando 5px de padding para cima/baixo e 10 para direita/esquerda */
     border-radius: 20px;/*arredondando as bordas*/
     outline: none; /*zerando as bordas*/
-    border: 2px solid black;/*criando uma borda de 2px para todos os lados */
+    border: 1px solid black;/*criando uma borda de 1px para todos os lados */
     width: 200px;/*definindo 200px de largura*/
 }
 .main-box-login-button, .main-box-cad-button{
-    margin-top: 25px;/*adicionando 20px de margem para cima */
+    margin-top: 16px;/*adicionando 20px de margem para cima */
     border-radius: 20px;/*arredondando a borda */
     color: white;/*definindo a cor do elemento para branco */
     background: #001a62;/*definindo a cor de fundo do elemento */
@@ -61,7 +69,7 @@
     transition: 0.5s;/*definindo uma transição de 0.5 segundos*/
 }
 .main-box-login-button:hover, .main-box-cad-button:hover{
-    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);/*adicionando sombra no lemento*/
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);/*adicionando sombra no elemento*/
     background: #01124152;/*definindo uma cor de fundo*/
 }
 .main-box-login-text{
@@ -72,4 +80,7 @@
     text-transform: uppercase;/*definindo o texto como maiúsculo*/
     letter-spacing: 2px;/*adicionando 2px de espaçaento entre as letras*/
     text-decoration: none;/*removendo o underline*/
+}
+.main-box-login-input::-webkit-input-placeholder {
+    color: black;
 }
