@@ -33,21 +33,22 @@
     </header>
     <h1 class="main-title">ONE - IOT Solutions</h1>
     <main class="main">
-        <div class="main-box"><div class="main-box">
-            <h2 class="main-box-title">Cadastro</h2>
-            <div class="main-box-cad">
-                <input class="main-box-cad-input" placeholder="Informe o seu nome:" type="text" name="nome"
-                    id="inputNome">
-                <input class="main-box-cad-input" placeholder="Informe o seu cpf:" type="text" name="cpf" id="inputCpf">
-                <input class="main-box-cad-input" placeholder="Informe o seu e-mail:" type="email" name="email"
-                    id="inputEmail">
-                <input class="main-box-cad-input" placeholder="Informe a sua senha:" type="password" name="senha"
-                    id="inputSenha">
-                <input class="main-box-cad-input" placeholder="Confirme a sua senha:" type="password" name="senhaConf"
-                    id="inputSenhaConf">
-                <a href="./api/index.html"><button class="main-box-cad-button">Cadastrar</button></a>
+        <form class="input-cadastro" id="form_cadastro" method="POST" onsubmit="return cadastrar()">
+            <div class="main-box">
+                <h2 class="main-box-title">Cadastro</h2>
+                <div class="main-box-cad">
+                    <input class="main-box-cad-input" placeholder="Informe o seu nome:" type="text" name="nome"
+                        id="inputNome">
+                    <input class="main-box-cad-input" placeholder="Informe o seu cpf:" type="text" name="cpf"
+                        id="inputCpf">
+                    <input class="main-box-cad-input" placeholder="Informe o seu e-mail:" type="email" name="email"
+                        id="inputEmail">
+                    <input class="main-box-cad-input" placeholder="Informe a sua senha:" type="password" name="senha"
+                        id="inputSenha">
+                    <button id="btn_cadastro" type="submit" class="main-box-cad-button">Cadastrar</button>
+                </div>
             </div>
-        </div>
+        </form>
     </main>
     <footer class="footer">
         <p class="footer-text"> One - solutions</p>
@@ -59,3 +60,39 @@
 </body>
 
 </html>
+<script>
+    function cadastrar() {
+        // aguardarCad();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+
+            if (response.ok) {
+                alert('Cadastro realizado com sucesso!');
+                window.location.href = 'login.html';
+            } else {
+
+                alert('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+                // finalizar_aguardarCad();
+            }
+        });
+
+        return false;
+    }
+// function aguardarCad() {
+//     btn_cadastro.disabled = true;
+//     img_aguarde.style.display = 'block';
+//     // div_erro.style.display='none';
+// }
+
+// function finalizar_aguardarCad() {
+//     btn_cadastro.disabled = false;
+//     img_aguarde.style.display = 'none';
+//     // div_erro.style.display='block';
+// }
+</script>

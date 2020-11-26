@@ -35,41 +35,20 @@
     </header>
     <h1 class="main-title">ONE - IOT Solutions</h1>
     <main class="main">
-        <div class="main-box">
-            <h2 class="main-box-title">Login</h2>
-            <div class="main-box-login">
-                <p class="main-box-text">Email</p>
-                <input class="main-box-login-input" placeholder="email@gmail.com" type="email" name="email"
-                    id="inputEmail">
+        <form class="input-login" id="form_login" method="POST" onsubmit="return entrar()">
+            <div class="main-box">
+                <h2 class="main-box-title">Login</h2>
+                <div class="main-box-login">
+                    <p class="main-box-text">Email</p>
+                    <input class="main-box-login-input" placeholder="email@gmail.com" type="email" name="email"
+                        id="inputEmail">
                     <p class="main-box-text">Senha</p>
-                <input class="main-box-login-input" placeholder="******" type="password" name="senha"
-                    id="inputSenha">
-                <a href="./Dashboard_One.html"><button class="main-box-login-button">entrar</button></a>
+                    <input class="main-box-login-input" placeholder="******" type="password" name="senha"
+                        id="inputSenha">
+                    <button class="main-box-login-button">entrar</button>
+                </div>
             </div>
-        </div>
-<<<<<<< HEAD:site/login.html
-=======
-        <div class="main-box">
-            <h2 class="main-box-title">Cadastro</h2>
-            <div class="main-box-cad">
-                <p class="main-box-text-cad">Informe seu nome</p>
-                <input class="main-box-cad-input" placeholder="Vinicius Herrero" type="text" name="nome"
-                    id="inputNome">
-                    <p class="main-box-text-cad">Informe seu CPF</p>
-                <input class="main-box-cad-input" placeholder="123.456.789-00" type="text" name="cpf" id="inputCpf">
-                <p class="main-box-text-cad">Informe seu email</p>
-                <input class="main-box-cad-input" placeholder="email@gmail.com" type="email" name="email"
-                    id="inputEmail">
-                    <p class="main-box-text-cad">Crie uma senha</p>
-                <input class="main-box-cad-input" placeholder="*******" type="password" name="senha"
-                    id="inputSenha">
-                    <p class="main-box-text-cad">Confirme sua senha</p>
-                <input class="main-box-cad-input" placeholder="*******" type="password" name="senhaConf"
-                    id="inputSenhaConf">
-                <a href="./Dashboard_One.html"><button class="main-box-cad-button">Cadastrar</button></a>
-            </div>
-        </div>
->>>>>>> 6e7d688fd758e7b73d3e04dce3f1c4747711bec2:site/public/login.html
+        </form>
     </main>
     <footer class="footer">
         <p class="footer-text"> One - solutions</p>
@@ -79,4 +58,52 @@
         </div>
     </footer>
 </body>
+
 </html>
+<script>
+    function entrar() {
+    // aguardar();
+    var formulario = new URLSearchParams(new FormData(form_login));
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        body: formulario
+    }).then(resposta => {
+
+        if (resposta.ok) {
+
+            resposta.json().then(json => {
+
+                sessionStorage.login_usuario_meuapp = json.email;
+                sessionStorage.nome_usuario_meuapp = json.nome;
+
+                window.location.href = 'dashboard_One.html';
+            });
+
+        } else {
+
+            alert('Usuario ou Senha inválido');
+
+            resposta.text().then(texto => {
+                // console.error(texto);
+                alert('Mesmo usuario com login e senha')
+                // finalizar_aguardar(texto);
+            });
+        }
+    });
+
+    return false;
+}
+
+function aguardar() {
+    btn_entrar.disabled = true;
+    img_aguarde.style.visibility = 'visible';
+    div_erro.style.visibility = 'hidden';
+}
+
+function finalizar_aguardar(resposta) {
+    btn_entrar.disabled = false;
+    img_aguarde.style.visibility = 'hidden';
+    div_erro.style.visibility = 'visible';
+    div_erro.innerHTML = resposta;
+}
+</script>

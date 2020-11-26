@@ -18,11 +18,6 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		cpf:{
-			field: 'CPF',
-			type: DataTypes.CHAR(11),
-			allowNull: false
-		},
 		email: {
 			field: 'email',
 			type: DataTypes.STRING,
@@ -31,6 +26,11 @@ module.exports = (sequelize, DataTypes) => {
 		senha: {
 			field: 'senha',
 			type: DataTypes.STRING,
+			allowNull: false
+		},
+		cpf:{
+			field: 'cpf',
+			type: DataTypes.CHAR,
 			allowNull: false
 		}
 
