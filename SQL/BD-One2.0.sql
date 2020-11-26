@@ -58,7 +58,6 @@ drop table registro;
 
 desc registro;
 
-drop table empresa;
 select * from empresa;
 insert into empresa values 
 (null, 'Vivo', '00. 011. 122/2333-45', 'vivo@gmail.com', '(11)98888-3232', '1202', '09313333', 'Alameda Santos', '1200', 'Jardim Paulista'),
@@ -92,6 +91,8 @@ insert into registro(Data_temp, Temperatura, Umidade, fkSensor) values
 (sysdate(), '25°', '48%', 1),
 (sysdate(), '0°', '0%', 2),
 (sysdate(), '20°', '50%', 3);
+update registro set Temperatura = '0°' where idRegistro = '3';
+update registro set Umidade = '0%' where idRegistro = '3';
 desc registro;
 
 select * from empresa;

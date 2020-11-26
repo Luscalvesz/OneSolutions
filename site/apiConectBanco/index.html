@@ -268,120 +268,120 @@
         this.lastIndexTempHumidity = 0;
         this.timeSwitch = 0;
 
-        function get_switch(){
+        // function get_switch(){
 
-            var http = new XMLHttpRequest();
-            http.open('GET', 'http://localhost:3000/api/switch', false);
-            http.send(null);        
+        //     var http = new XMLHttpRequest();
+        //     http.open('GET', 'http://localhost:3000/api/switch', false);
+        //     http.send(null);        
 			
-            var obj = JSON.parse(http.responseText);
-            if (obj.data.length == 0){
-                return;
-            }
+        //     var obj = JSON.parse(http.responseText);
+        //     if (obj.data.length == 0){
+        //         return;
+        //     }
 
-            var _lastIndexTemp = this.lastIndexTempSwitch;
-            this.lastIndexTempSwitch = obj.data.length;
-            listTemp = obj.data.slice(_lastIndexTemp);
+        //     var _lastIndexTemp = this.lastIndexTempSwitch;
+        //     this.lastIndexTempSwitch = obj.data.length;
+        //     listTemp = obj.data.slice(_lastIndexTemp);
 
-            listTemp.forEach(data => {
-                //Máximo de 60 itens exibidos no gráfico
-                if (chartSwitch.data.labels.length == 10 && chartSwitch.data.datasets[0].data.length == 10){
-                    chartSwitch.data.labels.shift();
-                    chartSwitch.data.datasets[0].data.shift();
-                }
+        //     listTemp.forEach(data => {
+        //         //Máximo de 60 itens exibidos no gráfico
+        //         if (chartSwitch.data.labels.length == 10 && chartSwitch.data.datasets[0].data.length == 10){
+        //             chartSwitch.data.labels.shift();
+        //             chartSwitch.data.datasets[0].data.shift();
+        //         }
 
-                chartSwitch.data.labels.push(this.time++);
-                chartSwitch.data.datasets[0].data.push(parseFloat(data));
-                chartSwitch.update();
-			});
+        //         chartSwitch.data.labels.push(this.time++);
+        //         chartSwitch.data.datasets[0].data.push(parseFloat(data));
+        //         chartSwitch.update();
+		// 	});
 			
-		} 
+		// } 
 		
-		get_switch();
+		// get_switch();
 
-		//Fourty Graphic
+		// //Fourty Graphic
 
-		var context4 = document.getElementById("chart-lumi").getContext("2d");
-		context4.canvas.width = 1000;
-		context4.canvas.height = 300;
+		// var context4 = document.getElementById("chart-lumi").getContext("2d");
+		// context4.canvas.width = 1000;
+		// context4.canvas.height = 300;
         
-        var lumi_sensor = {
-			type: 'line',
-			data: {
-				datasets: [{
-					label: "Luminosity x Time",
-					type: 'line',
-					borderColor: ['#ffff19'],
-					backgroundColor: ['#ffff7f']
-				}]
-			},
-			options: {
-				scales: {
-					xAxes: [{
-						//type: 'value',
-						distribution: 'series',
-                        ticks: {
-                            beginAtZero:true
-                        }
-					}],
-					yAxes: [{
-						scaleLabel: {
-							display: true,
-							labelString: 'Luminosity'
-                        },
-                        ticks: {
-                            beginAtZero:true
-                        }
-					}]
-				},
-				animation: {
-					duration: 0
-				}
-			}
-        };
+        // var lumi_sensor = {
+		// 	type: 'line',
+		// 	data: {
+		// 		datasets: [{
+		// 			label: "Luminosity x Time",
+		// 			type: 'line',
+		// 			borderColor: ['#ffff19'],
+		// 			backgroundColor: ['#ffff7f']
+		// 		}]
+		// 	},
+		// 	options: {
+		// 		scales: {
+		// 			xAxes: [{
+		// 				//type: 'value',
+		// 				distribution: 'series',
+        //                 ticks: {
+        //                     beginAtZero:true
+        //                 }
+		// 			}],
+		// 			yAxes: [{
+		// 				scaleLabel: {
+		// 					display: true,
+		// 					labelString: 'Luminosity'
+        //                 },
+        //                 ticks: {
+        //                     beginAtZero:true
+        //                 }
+		// 			}]
+		// 		},
+		// 		animation: {
+		// 			duration: 0
+		// 		}
+		// 	}
+        // };
         
-		var chartLumi = new Chart(context4, lumi_sensor);
+		// var chartLumi = new Chart(context4, lumi_sensor);
 
-        //Função para obter os dados de temperatura do server
+        // //Função para obter os dados de temperatura do server
                 
-        //Esse atributo dentro do contexto serve para saber qual foi o último índice processado, assim eliminado os outros elementos na
-        //hora de montar/atualizar o gráfico
-        this.lastIndexLumi = 0;
-        this.timeLumi = 0;
+        // //Esse atributo dentro do contexto serve para saber qual foi o último índice processado, assim eliminado os outros elementos na
+        // //hora de montar/atualizar o gráfico
+        // this.lastIndexLumi = 0;
+        // this.timeLumi = 0;
 
-        function get_lumi(){
+        // function get_lumi(){
 
-            var http = new XMLHttpRequest();
-            http.open('GET', 'http://localhost:3000/api/luminosity', false);
-            http.send(null);        
+        //     var http = new XMLHttpRequest();
+        //     http.open('GET', 'http://localhost:3000/api/luminosity', false);
+        //     http.send(null);        
 			
-            var obj = JSON.parse(http.responseText);
-            if (obj.data.length == 0){
-                return;
-            }
+        //     var obj = JSON.parse(http.responseText);
+        //     if (obj.data.length == 0){
+        //         return;
+        //     }
 
-            var _lastIndexTemp = this.lastIndexLumi;
-            this.lastIndexLumi = obj.data.length;
-            listTemp = obj.data.slice(_lastIndexTemp);
+        //     var _lastIndexTemp = this.lastIndexLumi;
+        //     this.lastIndexLumi = obj.data.length;
+        //     listTemp = obj.data.slice(_lastIndexTemp);
 
-            listTemp.forEach(data => {
-                //Máximo de 60 itens exibidos no gráfico
-                if (chartLumi.data.labels.length == 10 && chartLumi.data.datasets[0].data.length == 10){
-                    chartLumi.data.labels.shift();
-                    chartLumi.data.datasets[0].data.shift();
-                }
+        //     listTemp.forEach(data => {
+        //         //Máximo de 60 itens exibidos no gráfico
+        //         if (chartLumi.data.labels.length == 10 && chartLumi.data.datasets[0].data.length == 10){
+        //             chartLumi.data.labels.shift();
+        //             chartLumi.data.datasets[0].data.shift();
+        //         }
 
-                chartLumi.data.labels.push(this.time++);
-                chartLumi.data.datasets[0].data.push(parseFloat(data));
-                chartLumi.update();
-			});
+        //         chartLumi.data.labels.push(this.time++);
+        //         chartLumi.data.datasets[0].data.push(parseFloat(data));
+        //         chartLumi.update();
+		// 	});
 
-			document.getElementById('averageLumi').textContent = obj.average;
-			document.getElementById('averageHourLumi').textContent = obj.averageHour;
+		// 	document.getElementById('averageLumi').textContent = obj.average;
+		// 	document.getElementById('averageHourLumi').textContent = obj.averageHour;
 			
-		} 
+		// } 
 		
-		get_lumi();
+		// get_lumi();
 
 		function sendTemperature(){
 			var http = new XMLHttpRequest();
@@ -395,8 +395,6 @@
         setInterval(() => {
 			get_data();
 			get_dataHumidity();
-			get_switch();
-			get_lumi();
 			sendTemperature();
 		}, 1000);
 		
