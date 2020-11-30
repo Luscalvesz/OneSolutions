@@ -84,3 +84,7 @@
 .main-box-login-input::-webkit-input-placeholder {
     color: black;
 }
+#img_aguarde{
+    width: 80px;
+    margin: 0 auto;
+}

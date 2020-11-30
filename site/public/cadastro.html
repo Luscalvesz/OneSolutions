@@ -38,16 +38,17 @@
                 <h2 class="main-box-title">Cadastro</h2>
                 <div class="main-box-cad">
                     <input class="main-box-cad-input" placeholder="Informe o seu nome:" type="text" name="nome"
-                        id="inputNome">
+                        id="inputNome" required>
                     <input class="main-box-cad-input" placeholder="Informe o seu cpf:" type="text" name="cpf"
-                        id="inputCpf">
+                        id="inputCpf" required>
                     <input class="main-box-cad-input" placeholder="Informe o seu e-mail:" type="email" name="email"
-                        id="inputEmail">
+                        id="inputEmail" required>
                     <input class="main-box-cad-input" placeholder="Informe a sua senha:" type="password" name="senha"
-                        id="inputSenha">
+                        id="inputSenha" required>
                     <button id="btn_cadastro" type="submit" class="main-box-cad-button">Cadastrar</button>
                 </div>
             </div>
+            <img id="img_aguarde" style="display: none;" src="./assets/img/carregando.gif">
         </form>
     </main>
     <footer class="footer">
@@ -61,8 +62,17 @@
 
 </html>
 <script>
+    // function validar() {
+    //     if (inputNome.value == '' || inputCpf.value == '' || inputEmail.value == '' || inputSenha.value == '') {
+    //         alert('Por favor, informe asdahsda')
+
+    //     } else {
+    //         cadastrar()
+            
+    //     }
+    // }
     function cadastrar() {
-        // aguardarCad();
+        aguardarCad();
         var formulario = new URLSearchParams(new FormData(form_cadastro));
         fetch("/usuarios/cadastrar", {
             method: "POST",
@@ -72,27 +82,29 @@
             if (response.ok) {
                 alert('Cadastro realizado com sucesso!');
                 window.location.href = 'login.html';
+
             } else {
 
                 alert('Erro de cadastro!');
                 response.text().then(function (resposta) {
                     div_erro.innerHTML = resposta;
                 });
-                // finalizar_aguardarCad();
+                finalizar_aguardarCad();
             }
         });
 
         return false;
-    }
-// function aguardarCad() {
-//     btn_cadastro.disabled = true;
-//     img_aguarde.style.display = 'block';
-//     // div_erro.style.display='none';
-// }
 
-// function finalizar_aguardarCad() {
-//     btn_cadastro.disabled = false;
-//     img_aguarde.style.display = 'none';
-//     // div_erro.style.display='block';
-// }
+    }
+    function aguardarCad() {
+        btn_cadastro.disabled = true;
+        img_aguarde.style.display = 'block';
+        // div_erro.style.display='none';
+    }
+
+    function finalizar_aguardarCad() {
+        btn_cadastro.disabled = false;
+        img_aguarde.style.display = 'none';
+        // div_erro.style.display='block';
+    }
 </script>
