@@ -71,11 +71,11 @@
 				<div class="alert">
 					<h2 class="alert-title">Primeiro andar</h2>
 					<div class="alert-values">
-						<div class="alert-values-temp">
+						<div class="alert-values-temp" id="alertTemp">
 							<p class="alert-values-item" id="alertaTempAndar"></p>
 							<p class="alert-values-item" id="statusTempAndar"></p>
 						</div>
-						<div class="alert-values-umid">
+						<div class="alert-values-umid" id="alertUmid">
 							<p class="alert-values-item" id="alertaUmidAndar"></p>
 							<p class="alert-values-item" id="statusUmidAndar"></p>
 						</div>
@@ -332,18 +332,13 @@
 	};
 	// esse "sortearTemperatura()" será desnecessário quando usarmos o backend futuramente
 	function sortear_Temp() {
-		var limiteMin = 18;
-		var limiteMax = 27;
-		// var minimoAbsoluto = Math.abs(limiteMin);
-		return Number((Math.random() * (limiteMin && limiteMax)).toFixed(1));
+		var limiteMax = 40;
+		return Number((Math.random() * (limiteMax)).toFixed(1));
 	}
+
 	function sortear_umid() {
-		var limiteMin = 40;
-		var limiteMax = 55;
-		var umidResult = Number((Math.random() * (limiteMin && limiteMax)).toFixed(1));
-		return umidResult
-		// var minimoAbsoluto = Math.abs(limiteMin);
-		// return Number((Math.random() * (limiteMin && limiteMax)).toFixed(1));
+		var limiteMax = 70;
+		return Number((Math.random() * (limiteMax)).toFixed(1));
 	}
 
 	function recuperarDadosIniciais() {
@@ -426,44 +421,76 @@
 				momento: momento,
 				leitura: sortear_umid()
 			}
-
-			// tirando e colocando valores no gráfico
-			var tempMin = 18;
-			var tempMax = 27;
-			var umidMin = 20;
-			var umidMax = 40;
-
-			// verificando o nível de Umidade
-			if (novoRegistro2.leitura > umidMax) {
+	
+			 // verificando o nível de Umidade
+			if (novoRegistro2.leitura <= 27) {
+				alertaUmidAndar.innerHTML = `Umidade baixa: ${novoRegistro2.leitura} %`
+				// statusUmidAndar.style.color = '#305496'
+				alertUmid.style.background = '#305496'
+				
+				statusUmidAndar.innerHTML = 'Umid. status : CRÍTICO'
+			} else if (novoRegistro2.leitura > 27 && novoRegistro2.leitura <= 29) {
+				alertaUmidAndar.innerHTML = `Umidade baixa: ${novoRegistro2.leitura} %`
+				// statusUmidAndar.style.color = '#8497B0'
+				alertUmid.style.background = '#8497B0'
+				statusUmidAndar.innerHTML = 'Umid. status : EMERGÊNCIA'
+			}else if (novoRegistro2.leitura > 29 && novoRegistro2.leitura <= 42) {
+				alertaUmidAndar.innerHTML = `Umidade baixa: ${novoRegistro2.leitura} %`
+				alertUmid.style.background = '#33CCFF'
+				statusUmidAndar.style.color = 'black'
+				statusUmidAndar.innerHTML = 'Umid. status : ALERTA'
+			}else if (novoRegistro2.leitura > 42  && novoRegistro2.leitura <= 52) {
+				alertaUmidAndar.innerHTML = `Umidade ideal: ${novoRegistro2.leitura} %`
+				alertUmid.style.background = '#92D050'
+				statusUmidAndar.style.color = 'black'
+				statusUmidAndar.innerHTML = 'Umid. status : IDEAL'
+			} else if (novoRegistro2.leitura > 52  && novoRegistro2.leitura <= 64) {
 				alertaUmidAndar.innerHTML = `Umidade alta: ${novoRegistro2.leitura} %`
-				statusUmidAndar.style.color = 'red'
-				statusUmidAndar.innerHTML = 'Umid. status : Umidade alta'
-			} else if (novoRegistro2.leitura < umidMin) {
-				alertaUmidAndar.innerHTML = `Umidade: ${novoRegistro2.leitura} %`
-				statusUmidAndar.style.color = 'blue'
-				// statusUmidAndar.innerHTML = 'Umid. status : <span id=+alertValue'></span>'
+				alertUmid.style.background = '#FFFF00'
+				statusUmidAndar.style.color = 'black'
+				statusUmidAndar.innerHTML = 'Umid. status : ALERTA'
+			} else if (novoRegistro2.leitura > 64  && novoRegistro2.leitura <= 66) {
+				alertaUmidAndar.innerHTML = `Umidade alta: ${novoRegistro2.leitura} %`
+				alertUmid.style.background = '#FFC000'
+				statusUmidAndar.innerHTML = 'Umid. status : EMERGÊNCIA'
 			} else {
-				alertaUmidAndar.innerHTML = `Umidade: ${novoRegistro2.leitura} %`
-				statusUmidAndar.style.color = 'white'
-				statusUmidAndar.innerHTML = 'Umid. status: Umidade normal'
+				alertaUmidAndar.innerHTML = `Umidade alta: ${novoRegistro2.leitura} %`
+				alertUmid.style.background = '#FF0000'
+				statusUmidAndar.style.color = 'black'
+				statusUmidAndar.innerHTML = 'Umid. status : CRÍTICO'
 			}
 			
-
 			// verificando o nível de temperatura
-			if (novoRegistro.leitura > tempMax) {
+				if (novoRegistro.leitura <= 13) {
+				alertaTempAndar.innerHTML = `Temperatura baixa: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#305496'
+				statusTempAndar.innerHTML = 'Temp. status : CRÍTICO'
+			} else if (novoRegistro.leitura > 13 && novoRegistro.leitura <= 17) {
+				alertaTempAndar.innerHTML = `Temperatura baixa: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#8497B0'
+				statusTempAndar.innerHTML = 'Temp. status : EMERGÊNCIA'
+			}else if (novoRegistro.leitura > 17 && novoRegistro.leitura <= 20) {
+				alertaTempAndar.innerHTML = `Temperatura baixa: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#33CCFF'
+				statusTempAndar.innerHTML = 'Temp. status : ALERTA'
+			}else if (novoRegistro.leitura > 20  && novoRegistro.leitura <= 25) {
 				alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.leitura} %`
-				statusTempAndar.style.color = 'red'
-				statusTempAndar.innerHTML = 'Temp. status : Temperatura alta'
-			} else if (novoRegistro.leitura < tempMin) {
-				alertaTempAndar.innerHTML = `Umidade: ${novoRegistro.leitura}°C`
-				statusTempAndar.style.color = 'blue'
-				statusTempAndar.innerHTML = 'Temp. status : Temperatura baixa'
-			} else {
-				alertaTempAndar.innerHTML = `Temperatura: ${novoRegistro.leitura} %`
-				statusTempAndar.style.color = 'white'
-				statusTempAndar.innerHTML = 'Temp. status : Temperatura normal'
+				statusTempAndar.style.color = '#92D050'
+				statusTempAndar.innerHTML = 'Temp. status : IDEAL'
+			} else if (novoRegistro.leitura > 25  && novoRegistro.leitura <= 32) {
+				alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#FFFF00'
+				statusTempAndar.innerHTML = 'Temp. status : ALERTA'
+			} else if (novoRegistro.leitura > 32  && novoRegistro.leitura <= 36) {
+				alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#FFC000'
+				statusTempAndar.innerHTML = 'Temp. status : EMERGÊNCIA'
+			}else {
+				alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#FF0000'
+				statusTempAndar.innerHTML = 'Temp. status : CRÍTICO'
 			}
-
+			
 			alertaTempAndar.innerHTML = `Temperatura: ${novoRegistro.leitura} °C`
 			// alertaUmidAndar.innerHTML = `Umidade: ${novoRegistro2.leitura} %`
 			alertaTempSaguao.innerHTML = `Temperatura: ${novoRegistro.leitura} °C`
