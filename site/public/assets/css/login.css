@@ -67,7 +67,9 @@
     cursor: pointer;/*definindo o cursor do mouse como a "mãozinha"*/
     outline: none;/*retirando as bordas*/
     transition: 0.5s;/*definindo uma transição de 0.5 segundos*/
+    text-decoration: none;
 }
+
 .main-box-login-button:hover, .main-box-cad-button:hover{
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);/*adicionando sombra no elemento*/
     background: #01124152;/*definindo uma cor de fundo*/
@@ -87,4 +89,10 @@
 #img_aguarde{
     width: 80px;
     margin: 0 auto;
+}
+
+a:-webkit-any-link {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
 }
