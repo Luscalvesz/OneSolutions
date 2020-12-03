@@ -46,7 +46,7 @@
     color: white;
 }
 .main-box-login-input, .main-box-cad-input{
-    margin-bottom: 10px; /*adicionando 10px de margem para cima/baixo */
+    margin-bottom: 16px; /*adicionando 10px de margem para cima/baixo */
     padding: 5px 10px;/*adicionando 5px de padding para cima/baixo e 10 para direita/esquerda */
     border-radius: 20px;/*arredondando as bordas*/
     outline: none; /*zerando as bordas*/
@@ -82,6 +82,10 @@
     text-transform: uppercase;/*definindo o texto como maiúsculo*/
     letter-spacing: 2px;/*adicionando 2px de espaçaento entre as letras*/
     text-decoration: none;/*removendo o underline*/
+}
+.main-text-p {
+    color: white;
+    font-size: 18px;
 }
 .main-box-login-input::-webkit-input-placeholder {
     color: black;

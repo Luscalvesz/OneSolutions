@@ -45,8 +45,10 @@
                     <p class="main-box-text">Senha</p>
                     <input class="main-box-login-input" placeholder="******" type="password" name="senha"
                         id="inputSenha">
+                    <a href="./cadastro.html">
+                        <p class="main-text-p">Cadastrar-se</p>
+                    </a>
                     <button class="main-box-login-button">Entrar</button>
-                    <button class="main-box-login-button"><a href="cadastro.html">Cadastre-se</a></button>
                 </div>
             </div>
         </form>
@@ -63,48 +65,48 @@
 </html>
 <script>
     function entrar() {
-    // aguardar();
-    var formulario = new URLSearchParams(new FormData(form_login));
-    fetch("/usuarios/autenticar", {
-        method: "POST",
-        body: formulario
-    }).then(resposta => {
+        // aguardar();
+        var formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
 
-        if (resposta.ok) {
+            if (resposta.ok) {
 
-            resposta.json().then(json => {
+                resposta.json().then(json => {
 
-                sessionStorage.login_usuario_meuapp = json.email;
-                sessionStorage.nome_usuario_meuapp = json.nome;
+                    sessionStorage.login_usuario_meuapp = json.email;
+                    sessionStorage.nome_usuario_meuapp = json.nome;
 
-                window.location.href = 'dashboard_One.html';
-            });
+                    window.location.href = 'dashboard_One.html';
+                });
 
-        } else {
+            } else {
 
-            alert('Usuario ou Senha inválido');
+                alert('Usuario ou Senha inválido');
 
-            resposta.text().then(texto => {
-                // console.error(texto);
-                alert('Mesmo usuario com login e senha')
-                // finalizar_aguardar(texto);
-            });
-        }
-    });
+                resposta.text().then(texto => {
+                    // console.error(texto);
+                    alert('Mesmo usuario com login e senha')
+                    // finalizar_aguardar(texto);
+                });
+            }
+        });
 
-    return false;
-}
+        return false;
+    }
 
-function aguardar() {
-    btn_entrar.disabled = true;
-    img_aguarde.style.visibility = 'visible';
-    div_erro.style.visibility = 'hidden';
-}
+    function aguardar() {
+        btn_entrar.disabled = true;
+        img_aguarde.style.visibility = 'visible';
+        div_erro.style.visibility = 'hidden';
+    }
 
-function finalizar_aguardar(resposta) {
-    btn_entrar.disabled = false;
-    img_aguarde.style.visibility = 'hidden';
-    div_erro.style.visibility = 'visible';
-    div_erro.innerHTML = resposta;
-}
+    function finalizar_aguardar(resposta) {
+        btn_entrar.disabled = false;
+        img_aguarde.style.visibility = 'hidden';
+        div_erro.style.visibility = 'visible';
+        div_erro.innerHTML = resposta;
+    }
 </script>
