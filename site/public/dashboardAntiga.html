@@ -1,0 +1,545 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Dashboard - One</title>
+	<script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+	<script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+	<style>
+		canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+	</style>
+	<link rel="stylesheet" href="./assets/css/header.css">
+	<link rel="stylesheet" href="./assets/css/footer.css">
+	<link rel="stylesheet" href="./assets/css/api.css">
+	<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+</head>
+
+<body class="body">
+	<img class="imgFundo" src="./assets/img/background.png">
+	<header class="header">
+		<div class="header-box">
+			<a href="home.html">
+				<img class="header-box-img" src="./assets/img/logoOne.png" alt="logo">
+			</a>
+		</div>
+		<ul class="header-ul">
+			<a href="sobre.html">
+				<li class="header-ul-li">sobre</li>
+			</a>
+			<a href="contato.html">
+				<li class="header-ul-li">contato</li>
+			</a>
+			<a href="login.html">
+				<li class="header-ul-li">Sair</li>
+			</a>
+		</ul>
+	</header>
+	<section class="main">
+		<div id="sidenav" class="sidenav">
+			<img class="sidenav-closeImg" onclick="toggleNav()" src="./assets/img/close.svg">
+			<div class="sidenav-icons">
+				<div class="sidenav-analytics">
+					<img class="analytics-icon" onclick="showAnalytics()" src="./assets/img/analytics.svg">
+					<p class="analytics-text">Analytics</p>
+				</div>
+				<div class="sidenav-histo">
+					<img class="histo-icon" onclick="showHist()" src="./assets/img/history.svg">
+					<p class="histo-text">Histórico</p>
+				</div>
+
+			</div>
+			<!-- <button class="sidenav-item" onclick="showAnalytics()">Analytics</button> -->
+			<button class="sidenav-item">Primeiro andar</button>
+			<button class="sidenav-item">Saguão</button>
+			<button class="sidenav-item">Terreo</button>
+			<button class="sidenav-item">Subsolo</button>
+		</div>
+		<span class="openbtn" style="font-size:30px;cursor:pointer;color:white" onclick="toggleNav()">&#9776; ver
+			mais</span>
+		<div class="main-box">
+			<div class="analytics" id="analytics">
+				<img class="analytics-img" src="./assets/img/analyticsTemp.PNG">
+				<img class="analytics-img" src="./assets/img/analyticsUmid.PNG">
+			</div>
+			<div class="alerts-box">
+				<div class="alert">
+					<h2 class="alert-title">Primeiro andar</h2>
+					<div class="alert-values">
+						<div class="alert-values-temp" id="alertTemp">
+							<p class="alert-values-item" id="alertaTempAndar"></p>
+							<p class="alert-values-item" id="statusTempAndar"></p>
+						</div>
+						<div class="alert-values-umid" id="alertUmid">
+							<p class="alert-values-item" id="alertaUmidAndar"></p>
+							<p class="alert-values-item" id="statusUmidAndar"></p>
+						</div>
+					</div>
+
+				</div>
+				<div class="alert">
+					<h2 class="alert-title">Saguão</h2>
+					<div class="alert-values">
+						<div class="alert-values-item" id="alertaTempSaguao"></div>
+						<div class="alert-values-item" id="alertaUmidSaguao"><span id='alertValue'></span></div>
+					</div>
+				</div>
+				<!-- <div class="alert">
+					<h2 class="alert-title">Térreo</h2>
+					<div class="alert-values">
+						<div class="alert-values-item" id="alertaTempTerreo"></div>
+						<div class="alert-values-item" id="alertaUmidTerreo"></div>
+					</div>
+				</div> -->
+			</div>
+
+			<div style="display: flex;justify-content: space-evenly">
+				<div style="width: 540px; height: 245px">
+					<canvas id="grafico_umid"></canvas>
+				</div>
+				<div style="width: 540px; height: 245px">
+					<canvas id="grafico_temp"></canvas>
+				</div>
+			</div>
+		</div>
+	</section>
+	<img class="imgChatbot" src="./assets/img/help.svg" onclick="toggleChatbot()" alt="icone">
+	<div class="chatbot" id="chatbot">
+		<h3 class="chatbot-title">bem vindo ao suporte</h3>
+		<p class="chatbot-text">Tire as suas dúvidas nos nossos tópicos abaixo</p>
+		<button class="mostrarQuestoes" onclick="mostrarOpcoes()">Dúvidas Frequentes</button>
+		<img class="sidenav-closeImg" onclick="toggleChatbot()" src="./assets/img/close.svg">
+		<div id="questoes" class="chatbot-quest">
+			<span class="chatbot-quest-item" onclick="sensorParou()">sensor parou</span>
+			<span class="chatbot-quest-item" onclick="sensorExplodiu()">sensor explodiu</span>
+			<span class="chatbot-quest-item" onclick="socorroMeAjuda()">socorro me ajuda</span>
+		</div>
+	</div>
+	<div class="chatbotResp" id="chatbotResp">
+		<h3 id="respTitle" class="resp-title"></h3>
+		<p id="respItem1" class="resp-item"></p>
+		<p id="respItem2" class="resp-item"></p>
+		<p id="respItem3" class="resp-item"></p>
+		<p id="respItem4" class="resp-item"></p>
+		<p id="respItem5" class="resp-item"></p>
+		<img class="sidenav-closeImg" onclick="sensorParou()" src="./assets/img/close.svg">
+	</div>
+
+	<div class="hist" id="hist">
+		<img class="sidenav-closeImg" onclick="showHist()" src="./assets/img/close.svg">
+		<div class="hist-nav">
+			<button>primeiro andar</button>
+			<button>terreo</button>
+			<button>subsolo</button>
+		</div>
+		<div class="hist-box">
+			<div class="hist-top">
+				<p class="hist-temp-title">hora</p>
+				<p class="hist-temp-title">temp</p>
+				<p class="hist-temp-title">umid</p>
+			</div>
+			<div class="hist-temp">
+				<p class="hist-temp-value" id="histHour"></p>
+				<p class="hist-temp-value" id="histTemp"></p>
+				<p class="hist-temp-value" id="histUmid"></p>
+			</div>
+		</div>
+		<!-- <div class="hist-umid"></div> -->
+	</div>
+
+	<footer class="footer-api">
+		<p class="footer-text"> One - solutions</p>
+		<div class="footer-box">
+			<img class="footer-box-img" src="./assets/img/github-logo.svg" alt="" class="footer-box">
+			<img class="footer-box-img" src="./assets/img/facebook-circular-logo.svg" alt="" class="footer-box">
+		</div>
+	</footer>
+
+</body>
+
+</html>
+
+<script>
+	function toggleNav() {
+		document.getElementById("sidenav").classList.toggle('open')
+	}
+	function toggleChatbot() {
+		document.getElementById('chatbot').classList.toggle('ativar')
+	}
+	function showAnalytics() {
+		document.getElementById('analytics').classList.toggle('ativar')
+	}
+	function showHist() {
+		document.getElementById('hist').classList.toggle('ativar')
+	}
+	function mostrarOpcoes() {
+		document.getElementById('questoes').classList.toggle('activeQuests')
+	}
+	function sensorParou() {
+		document.getElementById('chatbotResp').classList.toggle('ativar')
+		document.getElementById('respTitle').innerHTML = 'O sensor parou'
+		document.getElementById('respItem1').innerHTML = '1° Verifique se o aparelho está ligado na tomada'
+		document.getElementById('respItem2').innerHTML = '2° Verifique se o aparelho está conectado com a internet'
+		document.getElementById('respItem3').innerHTML = '3° Verifique se o aparelho uahsuai asuahas'
+		document.getElementById('respItem4').innerHTML = '4° Verifique se o aparelho uahsuai asuahas'
+		document.getElementById('respItem5').innerHTML = '5° Verifique se o aparelho uahsuai asuahas'
+	}
+	function sensorExplodiu() {
+		document.getElementById('chatbotResp').classList.toggle('ativar')
+		document.getElementById('respTitle').innerHTML = 'O sensor explodiu'
+		document.getElementById('respItem1').innerHTML = '1° hsasjda oapspdasd aoswqpd'
+		document.getElementById('respItem2').innerHTML = '2° ashuuaios joiasoijas jopsd '
+		document.getElementById('respItem3').innerHTML = '3° uaasd hsuu ahas'
+		document.getElementById('respItem4').innerHTML = '4° gswi asuaswhas'
+		document.getElementById('respItem5').innerHTML = '5° asfdge'
+	}
+	function socorroMeAjuda() {
+		document.getElementById('chatbotResp').classList.toggle('ativar')
+		document.getElementById('respTitle').innerHTML = 'Socorro me ajuda'
+		document.getElementById('respItem1').innerHTML = '1° batata'
+		document.getElementById('respItem2').innerHTML = '2° batata asias '
+		document.getElementById('respItem3').innerHTML = '3° ksçapsd dasda'
+		document.getElementById('respItem4').innerHTML = '4° kasopçj apssasds'
+		document.getElementById('respItem5').innerHTML = '5° fjk´pçspw wwwws'
+	}
+
+
+
+
+
+
+
+
+
+	var config_temp = {
+		type: 'line',
+		data: {
+			labels: [],
+			datasets: [{
+				label: 'Temperatura',
+				borderColor: '#f21111',
+				borderWidth: 5,
+				backgroundColor: '#000000a4',
+				gridLines: {
+					color: '#ff0000'
+				},
+				data: [],
+				fill: true,
+			}]
+		},
+		options: {
+			responsive: true,
+			title: {
+				display: true,
+				text: 'Gráfico de histórico de temperatura',
+				fontColor: 'White'
+			},
+			tooltips: {
+				mode: 'index',
+				intersect: false,
+			},
+			hover: {
+				mode: 'nearest',
+				intersect: true
+			},
+			scales: {
+				xAxes: [{
+					Color: 'rgba(255, 255, 255)',
+					display: true,
+					gridLines: {
+						color: '#fff'
+					},
+					scaleLabel: {
+						display: true,
+						labelString: 'Horário da Leitura',
+						fontColor: 'White'
+					}
+				}],
+				yAxes: [{
+					display: true,
+					gridLines: {
+						color: '#fff'
+					},
+					scaleLabel: {
+						display: true,
+						labelString: 'ºC',
+						fontColor: 'White'
+					}
+				}]
+			}
+		}
+	};
+
+	var config_umid = {
+		type: 'line',
+		data: {
+			labels: [],
+			datasets: [{
+				label: 'Umidade',
+				borderColor: '#fff',
+				borderWidth: 5,
+				backgroundColor: '#000000a4',
+				data: [],
+				fill: true,
+			}]
+		},
+		options: {
+			responsive: true,
+			title: {
+				display: true,
+				text: 'Gráfico de histórico de umidade',
+				fontColor: 'White'
+			},
+			tooltips: {
+				mode: 'index',
+				intersect: false,
+			},
+			hover: {
+				mode: 'nearest',
+				intersect: true
+			},
+			scales: {
+				xAxes: [{
+					display: true,
+					gridLines: {
+						color: '#fff'
+					},
+					scaleLabel: {
+						display: true,
+						labelString: 'Horário da Leitura',
+						fontColor: 'White'
+					}
+
+				}],
+				yAxes: [{
+					display: true,
+					gridLines: {
+						color: '#fff'
+					},
+					scaleLabel: {
+						display: true,
+						labelString: '%',
+						fontColor: 'White'
+					}
+				}]
+			}
+		}
+	};
+	// esse "sortearTemperatura()" será desnecessário quando usarmos o backend futuramente
+	function sortear_Temp() {
+		var limiteMax = 40;
+		return Number((Math.random() * (limiteMax)).toFixed(1));
+	}
+
+	function sortear_umid() {
+		var limiteMax = 70;
+		return Number((Math.random() * (limiteMax)).toFixed(1));
+	}
+
+	function recuperarDadosIniciais() {
+
+		// esse "registros" será recuperado do backend futuramente
+		var registros_temp = [
+			{
+				momento: '',
+				leitura: sortear_Temp()
+			},
+			{
+				momento: '',
+				leitura: sortear_Temp()
+			},
+			{
+				momento: '',
+				leitura: sortear_Temp()
+			},
+			{
+				momento: '',
+				leitura: sortear_Temp()
+			}
+		];
+		var registros_umid = [
+			{
+				momento: '',
+				leitura: sortear_umid()
+			},
+			{
+				momento: '',
+				leitura: sortear_umid()
+			},
+			{
+				momento: '',
+				leitura: sortear_umid()
+			},
+			{
+				momento: '',
+				leitura: sortear_umid()
+			}
+		];
+
+		var contador = 0;
+		var contador2 = 0;
+		// registros.length é a quantidade de itens em "registros"
+		while (contador < registros_temp.length) {
+
+			config_temp.data.labels.push(registros_temp[contador].momento);  // incluir um novo momento
+			config_temp.data.datasets[0].data.push(registros_temp[contador].leitura);  // incluir uma nova leitura
+
+			contador++;
+		}
+		while (contador2 < registros_umid.length) {
+
+			config_umid.data.labels.push(registros_umid[contador2].momento);
+			config_umid.data.datasets[0].data.push(registros_umid[contador2].leitura);  // incluir uma nova leitura
+
+			contador2++;
+		}
+
+
+	}
+
+	function receberNovasLeituras() {
+		setTimeout(() => {
+
+			// esses "agora" etc até "momentos" serão desnecessários quando usarmos o backend futuramente
+			var agora = new Date();
+			var hora = agora.getHours();
+			var minuto = agora.getMinutes();
+			var segundo = agora.getSeconds();
+			var momento = `${hora > 9 ? '' : '0'}${hora}:${minuto > 9 ? '' : '0'}${minuto}:${segundo > 9 ? '' : '0'}${segundo}`;
+
+			// esse "novoRegistro" será recuperado do backend futuramente
+			var novoRegistro = {
+				momento: momento,
+				leitura: sortear_Temp()
+			};
+			var novoRegistro2 = {
+				momento: momento,
+				leitura: sortear_umid()
+			}
+	
+			 // verificando o nível de Umidade
+			if (novoRegistro2.leitura <= 27) {
+				alertaUmidAndar.innerHTML = `Umidade baixa: ${novoRegistro2.leitura} %`
+				// statusUmidAndar.style.color = '#305496'
+				alertUmid.style.background = '#305496'
+				
+				statusUmidAndar.innerHTML = 'Umid. status : CRÍTICO'
+			} else if (novoRegistro2.leitura > 27 && novoRegistro2.leitura <= 29) {
+				alertaUmidAndar.innerHTML = `Umidade baixa: ${novoRegistro2.leitura} %`
+				// statusUmidAndar.style.color = '#8497B0'
+				alertUmid.style.background = '#8497B0'
+				statusUmidAndar.innerHTML = 'Umid. status : EMERGÊNCIA'
+			}else if (novoRegistro2.leitura > 29 && novoRegistro2.leitura <= 42) {
+				alertaUmidAndar.innerHTML = `Umidade baixa: ${novoRegistro2.leitura} %`
+				alertUmid.style.background = '#33CCFF'
+				statusUmidAndar.style.color = 'black'
+				statusUmidAndar.innerHTML = 'Umid. status : ALERTA'
+			}else if (novoRegistro2.leitura > 42  && novoRegistro2.leitura <= 52) {
+				alertaUmidAndar.innerHTML = `Umidade ideal: ${novoRegistro2.leitura} %`
+				alertUmid.style.background = '#92D050'
+				statusUmidAndar.style.color = 'black'
+				statusUmidAndar.innerHTML = 'Umid. status : IDEAL'
+			} else if (novoRegistro2.leitura > 52  && novoRegistro2.leitura <= 64) {
+				alertaUmidAndar.innerHTML = `Umidade alta: ${novoRegistro2.leitura} %`
+				alertUmid.style.background = '#FFFF00'
+				statusUmidAndar.style.color = 'black'
+				statusUmidAndar.innerHTML = 'Umid. status : ALERTA'
+			} else if (novoRegistro2.leitura > 64  && novoRegistro2.leitura <= 66) {
+				alertaUmidAndar.innerHTML = `Umidade alta: ${novoRegistro2.leitura} %`
+				alertUmid.style.background = '#FFC000'
+				statusUmidAndar.innerHTML = 'Umid. status : EMERGÊNCIA'
+			} else {
+				alertaUmidAndar.innerHTML = `Umidade alta: ${novoRegistro2.leitura} %`
+				alertUmid.style.background = '#FF0000'
+				statusUmidAndar.style.color = 'black'
+				statusUmidAndar.innerHTML = 'Umid. status : CRÍTICO'
+			}
+			
+			// verificando o nível de temperatura
+				if (novoRegistro.leitura <= 13) {
+				alertaTempAndar.innerHTML = `Temperatura baixa: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#305496'
+				statusTempAndar.innerHTML = 'Temp. status : CRÍTICO'
+			} else if (novoRegistro.leitura > 13 && novoRegistro.leitura <= 17) {
+				alertaTempAndar.innerHTML = `Temperatura baixa: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#8497B0'
+				statusTempAndar.innerHTML = 'Temp. status : EMERGÊNCIA'
+			}else if (novoRegistro.leitura > 17 && novoRegistro.leitura <= 20) {
+				alertaTempAndar.innerHTML = `Temperatura baixa: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#33CCFF'
+				statusTempAndar.innerHTML = 'Temp. status : ALERTA'
+			}else if (novoRegistro.leitura > 20  && novoRegistro.leitura <= 25) {
+				alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#92D050'
+				statusTempAndar.innerHTML = 'Temp. status : IDEAL'
+			} else if (novoRegistro.leitura > 25  && novoRegistro.leitura <= 32) {
+				alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#FFFF00'
+				statusTempAndar.innerHTML = 'Temp. status : ALERTA'
+			} else if (novoRegistro.leitura > 32  && novoRegistro.leitura <= 36) {
+				alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#FFC000'
+				statusTempAndar.innerHTML = 'Temp. status : EMERGÊNCIA'
+			}else {
+				alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.leitura} %`
+				statusTempAndar.style.color = '#FF0000'
+				statusTempAndar.innerHTML = 'Temp. status : CRÍTICO'
+			}
+			
+			alertaTempAndar.innerHTML = `Temperatura: ${novoRegistro.leitura} °C`
+			// alertaUmidAndar.innerHTML = `Umidade: ${novoRegistro2.leitura} %`
+			alertaTempSaguao.innerHTML = `Temperatura: ${novoRegistro.leitura} °C`
+			alertaUmidSaguao.innerHTML = `Umidade: ${novoRegistro2.leitura} %`
+			// alertaTempTerreo.innerHTML = `Temperatura: ${novoRegistro.leitura} °C`
+			// alertaUmidTerreo.innerHTML = `Umidade: ${novoRegistro2.leitura} %`
+
+			histHour.innerHTML += `${novoRegistro.momento}<br>`
+			histTemp.innerHTML += `${novoRegistro.leitura} °C<br>`
+			histUmid.innerHTML += `${novoRegistro2.leitura} %<br>`
+
+			config_temp.data.labels.shift(); // apagar o primeiro
+			config_temp.data.labels.push(novoRegistro.momento); // incluir um novo momento
+			config_temp.data.datasets[0].data.shift();  // apagar o primeiro
+			config_temp.data.datasets[0].data.push(novoRegistro.leitura); // incluir uma nova leitura
+
+			config_umid.data.labels.shift(); // apagar o primeiro
+			config_umid.data.labels.push(novoRegistro2.momento); // incluir um novo momento
+			config_umid.data.datasets[0].data.shift();  // apagar o primeiro
+			config_umid.data.datasets[0].data.push(novoRegistro2.leitura); // incluir uma nova 
+
+			// Atualiza o gráfico
+			window.graficoLinha.update();
+			window.graficoLinha_2.update();
+
+			// agendar a chamada da mesma função para daqui a 7 segundos
+			receberNovasLeituras();
+		}, 3000); // 3000 ms -> 3 segundos
+	}
+
+
+	function plotarGrafico() {
+		// chamar os 7 últimos registros de leitura
+		recuperarDadosIniciais();
+
+		// criação do gráfico na página
+		var ctx = document.getElementById('grafico_temp').getContext('2d');
+		window.graficoLinha = new Chart(ctx, config_temp);
+
+		var ctx2 = grafico_umid.getContext('2d');
+		window.graficoLinha_2 = new Chart(ctx2, config_umid)
+
+		Chart.defaults.global.defaultFontColor = '#fff'
+
+		// função que agenda a recuperação da última leitura para daqui a 7 segundos
+		receberNovasLeituras();
+	}
+
+	// indicando que a função "plotarGrafico" será invocada assim que a página carregar
+	window.onload = plotarGrafico;
+
+</script>
