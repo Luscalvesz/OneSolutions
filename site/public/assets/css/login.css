@@ -46,7 +46,7 @@
     color: white;
 }
 .main-box-login-input, .main-box-cad-input{
-    margin-bottom: 16px; /*adicionando 10px de margem para cima/baixo */
+    margin-bottom: 10px; /*adicionando 10px de margem para cima/baixo */
     padding: 5px 10px;/*adicionando 5px de padding para cima/baixo e 10 para direita/esquerda */
     border-radius: 20px;/*arredondando as bordas*/
     outline: none; /*zerando as bordas*/
@@ -67,9 +67,7 @@
     cursor: pointer;/*definindo o cursor do mouse como a "mãozinha"*/
     outline: none;/*retirando as bordas*/
     transition: 0.5s;/*definindo uma transição de 0.5 segundos*/
-    text-decoration: none;
 }
-
 .main-box-login-button:hover, .main-box-cad-button:hover{
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);/*adicionando sombra no elemento*/
     background: #01124152;/*definindo uma cor de fundo*/
@@ -83,20 +81,10 @@
     letter-spacing: 2px;/*adicionando 2px de espaçaento entre as letras*/
     text-decoration: none;/*removendo o underline*/
 }
-.main-text-p {
-    color: white;
-    font-size: 18px;
-}
 .main-box-login-input::-webkit-input-placeholder {
     color: black;
 }
 #img_aguarde{
     width: 80px;
     margin: 0 auto;
-}
-
-a:-webkit-any-link {
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
 }
