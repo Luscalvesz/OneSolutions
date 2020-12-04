@@ -68,6 +68,10 @@
     outline: none;/*retirando as bordas*/
     transition: 0.5s;/*definindo uma transição de 0.5 segundos*/
 }
+.main-text-p {
+    font-size: 18px;
+    color: white;
+}
 .main-box-login-button:hover, .main-box-cad-button:hover{
     box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);/*adicionando sombra no elemento*/
     background: #01124152;/*definindo uma cor de fundo*/
