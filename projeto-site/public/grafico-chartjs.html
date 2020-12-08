@@ -172,9 +172,9 @@
         <button class="mostrarQuestoes" onclick="mostrarOpcoes()">Dúvidas Frequentes</button>
         <img class="sidenav-closeImg" onclick="toggleChatbot()" src="./assets/img/close.svg">
         <div id="questoes" class="chatbot-quest">
-            <span class="chatbot-quest-item" onclick="sensorParou()">sensor parou</span>
-            <span class="chatbot-quest-item" onclick="sensorExplodiu()">sensor explodiu</span>
-            <span class="chatbot-quest-item" onclick="socorroMeAjuda()">socorro me ajuda</span>
+            <span class="chatbot-quest-item" onclick="sensorParou()">Sensor parou?</span>
+            <span class="chatbot-quest-item" onclick="sensorExplodiu()">Não consegue fazer login?</span>
+            <span class="chatbot-quest-item" onclick="socorroMeAjuda()">Quer ver um Dashboard específico?</span>
         </div>
     </div>
     <div class="chatbotResp" id="chatbotResp">
@@ -467,7 +467,7 @@
     }
     function sensorParou() {
         document.getElementById('chatbotResp').classList.toggle('ativar')
-        document.getElementById('respTitle').innerHTML = 'O sensor parou'
+        document.getElementById('respTitle').innerHTML = 'O sensor parou?'
         document.getElementById('respItem1').innerHTML = '1° Verifique se o aparelho está ligado na tomada!'
         document.getElementById('respItem2').innerHTML = '2° Verifique se o arduino está conectado ao cabo USB!'
         document.getElementById('respItem3').innerHTML = '3° Verifique se o aparelho está conectado com a internet!'
@@ -475,21 +475,19 @@
     }
     function sensorExplodiu() {
         document.getElementById('chatbotResp').classList.toggle('ativar')
-        document.getElementById('respTitle').innerHTML = 'O sensor explodiu'
-        document.getElementById('respItem1').innerHTML = '1° hsasjda oapspdasd aoswqpd'
-        document.getElementById('respItem2').innerHTML = '2° ashuuaios joiasoijas jopsd '
-        document.getElementById('respItem3').innerHTML = '3° uaasd hsuu ahas'
-        document.getElementById('respItem4').innerHTML = '4° gswi asuaswhas'
-        document.getElementById('respItem5').innerHTML = '5° asfdge'
+        document.getElementById('respTitle').innerHTML = 'O meu login e senha não funciona?'
+        document.getElementById('respItem1').innerHTML = '1° Esqueci meu email!'
+        document.getElementById('respItem2').innerHTML = '2° Esqueci minha senha!'
+        document.getElementById('respItem3').innerHTML = '3° Cadastre outro usuário!'
+        document.getElementById('respItem4').innerHTML = '4° Entre em contato conosco!'
     }
     function socorroMeAjuda() {
         document.getElementById('chatbotResp').classList.toggle('ativar')
-        document.getElementById('respTitle').innerHTML = 'Socorro me ajuda'
-        document.getElementById('respItem1').innerHTML = '1° batata'
+        document.getElementById('respTitle').innerHTML = 'Onde encontrar um sensor específico?'
+        document.getElementById('respItem1').innerHTML = '1° Vá no menu ver mais!'
         document.getElementById('respItem2').innerHTML = '2° batata asias '
         document.getElementById('respItem3').innerHTML = '3° ksçapsd dasda'
-        document.getElementById('respItem4').innerHTML = '4° kasopçj apssasds'
-        document.getElementById('respItem5').innerHTML = '5° fjk´pçspw wwwws'
+        document.getElementById('respItem4').innerHTML = '4° Entre em contato conosco!'
     }
 
 
