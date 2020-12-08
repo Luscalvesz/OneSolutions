@@ -350,3 +350,11 @@
 .ativar{
     display: flex;
 }
+.link {
+    font-size: 30px;
+    margin: 5px 0;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
+}
