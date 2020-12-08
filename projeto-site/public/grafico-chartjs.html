@@ -122,34 +122,44 @@
                             <p class="alert-values-item" id="statusUmidAndar">status: crítico</p>
                         </div>
                     </div>
-
+                    <button class="mostrarGrafico" onclick="mostrarGrafico()">Mostrar grafico</button>
                 </div>
                 <div class="alert">
-                    <h2 class="alert-title">Saguão</h2>
+                    <h2 class="alert-title">Saguao</h2>
                     <div class="alert-values">
-                        <div class="alert-values-item" id="alertaTempSaguao"></div>
-                        <div class="alert-values-item" id="alertaUmidSaguao"><span id='alertValue'></span></div>
+                        <div class="alert-values-temp" id="alertTempSag">
+                            <p class="alert-values-item" id="alertaTempSaguao">Temperatura: 45°</p>
+                            <p class="alert-values-item" id="statusTempSaguao">status: critico</p>
+                        </div>
+                        <div class="alert-values-umid" id="alertUmidSag">
+                            <p class="alert-values-item" id="alertaUmidSaguao">Umidade: 45%</p>
+                            <p class="alert-values-item" id="statusUmidSaguao">status: crítico</p>
+                        </div>
                     </div>
+                    <button class="mostrarGrafico" onclick="mostrarGrafico()">Mostrar grafico</button>
                 </div>
-                <!-- <div class="alert">
-					<h2 class="alert-title">Térreo</h2>
-					<div class="alert-values">
-						<div class="alert-values-item" id="alertaTempTerreo"></div>
-						<div class="alert-values-item" id="alertaUmidTerreo"></div>
-					</div>
-				</div> -->
+                
+                
             </div>
 
 
 
             <!-- G R A F I C O     F E R N A N D A -->
-            <div style="display: block;justify-content: space-evenly">
+            <div id="graficoPrimeiroAndar" class="graficoPrimeiroAndar">
 
+                <h3 class="grafico-title">primeiro andar</h3>
+                <div class="grafico-values">
+                    <span id="graficoTemp"></span>
+                    <span id="graficoUmid"></span>
+                </div>
                 <div style="width: 625px; height: 250px">
                     <div id="div_aguarde">Dados sendo obtidos...</div>
                     <canvas id="canvas_grafico"></canvas>
                 </div>
-            </div>
+                <img class="sidenav-closeImg" onclick="mostrarGrafico()" src="./assets/img/close.svg">
+            </div> 
+
+
             <!-- <div style="display: flex;justify-content: space-evenly">
 				<div style="width: 540px; height: 245px">
 					<canvas id="grafico_umid"></canvas>
@@ -186,13 +196,13 @@
         <img class="sidenav-closeImg" onclick="sensorParou()" src="./assets/img/close.svg">
     </div>
 
-    <footer class="footer-api">
+    <!-- <footer class="footer-api">
         <p class="footer-text"> One - solutions</p>
         <div class="footer-box">
             <img class="footer-box-img" src="./assets/img/github-logo.svg" alt="" class="footer-box">
             <img class="footer-box-img" src="./assets/img/facebook-circular-logo.svg" alt="" class="footer-box">
         </div>
-    </footer>
+    </footer> -->
 </body>
 
 
@@ -334,58 +344,76 @@
                     // alertaTempAndar.innerHTML = `Temperatura ${novoRegistro.temperatura}`
                     // alertaUmidAndar.innerHTML = `Umidade ${novoRegistro.umidade}`
 
+
+
+                    
+                    graficoTemp.innerHTML = `Temperatura atual: ${novoRegistro.temperatura} %`
+                    graficoUmid.innerHTML = `Umidade atual: ${novoRegistro.umidade} %`
+
+                    
                         // verificando temperatura
                     if (novoRegistro.temperatura <= 13) {
                         alertaTempAndar.innerHTML = `Temperatura baixa: ${novoRegistro.temperatura} %`
-                        statusTempAndar.style.color = '#305496'
                         statusTempAndar.innerHTML = 'Temp. status : CRÍTICO'
+                        alertTemp.style.background = '#305496'
+                        
                     } else if (novoRegistro.temperatura > 13 && novoRegistro.temperatura <= 17) {
                         alertaTempAndar.innerHTML = `Temperatura baixa: ${novoRegistro.temperatura} %`
-                        statusTempAndar.style.color = '#8497B0'
+
                         statusTempAndar.innerHTML = 'Temp. status : EMERGÊNCIA'
+                        alertTemp.style.background = '#8497B0'
                     } else if (novoRegistro.temperatura > 17 && novoRegistro.temperatura <= 20) {
                         alertaTempAndar.innerHTML = `Temperatura baixa: ${novoRegistro.temperatura} %`
-                        statusTempAndar.style.color = '#33CCFF'
+                        alertaTempAndar.style.color = 'black'
+                        statusTempAndar.style.color = 'black'
                         statusTempAndar.innerHTML = 'Temp. status : ALERTA'
+                        alertTemp.style.background = '#33CCFF'
                     } else if (novoRegistro.temperatura > 20 && novoRegistro.temperatura <= 25) {
                         alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.temperatura} %`
-                        statusTempAndar.style.color = '#92D050'
+
                         statusTempAndar.innerHTML = 'Temp. status : IDEAL'
+                        alertTemp.style.background = '#92D050'
                     } else if (novoRegistro.temperatura > 25 && novoRegistro.temperatura <= 32) {
                         alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.temperatura} %`
-                        statusTempAndar.style.color = '#FFFF00'
+                        alertaTempAndar.style.color = 'black'
+                        statusTempAndar.style.color = 'black'
                         statusTempAndar.innerHTML = 'Temp. status : ALERTA'
+                        alertTemp.style.background = '#FFFF00'
                     } else if (novoRegistro.temperatura > 32 && novoRegistro.temperatura <= 36) {
                         alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.temperatura} %`
-                        statusTempAndar.style.color = '#FFC000'
+                        alertaTempAndar.style.color = 'black'
+                        statusTempAndar.style.color = 'black'
                         statusTempAndar.innerHTML = 'Temp. status : EMERGÊNCIA'
+                        alertTemp.style.background = '#FFC000'
                     } else {
                         alertaTempAndar.innerHTML = `Temperatura alta: ${novoRegistro.temperatura} %`
-                        statusTempAndar.style.color = '#000'
+                        alertUmid.style.background = '#FF0000'
+
                         statusTempAndar.innerHTML = 'Temp. status : CRÍTICO'
                     }
 
                         // verificando umidade
                     if (novoRegistro.umidade <= 27) {
                         alertaUmidAndar.innerHTML = `Umidade baixa: ${novoRegistro.umidade} %`
-                        statusUmidAndar.style.color = '#305496'
+                        statusUmidAndar.style.color = 'black'
                         alertUmid.style.background = '#305496'
 
                         statusUmidAndar.innerHTML = 'Umid. status : CRÍTICO'
                     } else if (novoRegistro.umidade > 27 && novoRegistro.umidade <= 29) {
                         alertaUmidAndar.innerHTML = `Umidade baixa: ${novoRegistro.umidade} %`
-                        statusUmidAndar.style.color = '#8497B0'
+
                         alertUmid.style.background = '#8497B0'
                         statusUmidAndar.innerHTML = 'Umid. status : EMERGÊNCIA'
                     } else if (novoRegistro.umidade > 29 && novoRegistro.umidade <= 42) {
                         alertaUmidAndar.innerHTML = `Umidade baixa: ${novoRegistro.umidade} %`
                         alertUmid.style.background = '#33CCFF'
+                        alertaUmidAndar.style.color = 'black'
                         statusUmidAndar.style.color = 'black'
                         statusUmidAndar.innerHTML = 'Umid. status : ALERTA'
                     } else if (novoRegistro.umidade > 42 && novoRegistro.umidade <= 52) {
                         alertaUmidAndar.innerHTML = `Umidade ideal: ${novoRegistro.umidade} %`
                         alertUmid.style.background = '#92D050'
-                        statusUmidAndar.style.color = 'black'
+
                         statusUmidAndar.innerHTML = 'Umid. status : IDEAL'
                     } else if (novoRegistro.umidade > 52 && novoRegistro.umidade <= 64) {
                         alertaUmidAndar.innerHTML = `Umidade alta: ${novoRegistro.umidade} %`
@@ -394,12 +422,13 @@
                         statusUmidAndar.innerHTML = 'Umid. status : ALERTA'
                     } else if (novoRegistro.umidade > 64 && novoRegistro.umidade <= 66) {
                         alertaUmidAndar.innerHTML = `Umidade alta: ${novoRegistro.umidade} %`
+                        statusUmidAndar.style.color = 'black'
                         alertUmid.style.background = '#FFC000'
                         statusUmidAndar.innerHTML = 'Umid. status : EMERGÊNCIA'
                     } else {
                         alertaUmidAndar.innerHTML = `Umidade alta: ${novoRegistro.umidade} %`
                         alertUmid.style.background = '#FF0000'
-                        statusUmidAndar.style.color = 'black'
+
                         statusUmidAndar.innerHTML = 'Umid. status : CRÍTICO'
                     }
 
@@ -431,6 +460,7 @@
             data: dados,
             options: configurarGrafico()
         });
+        		Chart.defaults.global.defaultFontColor = '#fff'
 
         setTimeout(() => atualizarGrafico(idcaminhao, dados), 2000);
     }
@@ -463,6 +493,9 @@
     }
     function mostrarOpcoes() {
         document.getElementById('questoes').classList.toggle('activeQuests')
+    }
+    function mostrarGrafico() {
+        document.getElementById('graficoPrimeiroAndar').classList.toggle('ativar')
     }
     function sensorParou() {
         document.getElementById('chatbotResp').classList.toggle('ativar')
