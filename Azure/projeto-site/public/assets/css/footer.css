@@ -1,0 +1,24 @@
+.footer{
+    display: flex;/*definindo o display como flex*/
+    justify-content: space-between;/*alinhando horizontalmente*/
+    align-items: center;/*alinhando verticalmente*/
+    background: #000000a3;/*definindo a cor de fundo*/
+    padding: 0.5% 0;/*adicionando o padding de 0.5% para cima/baixo*/
+    position: fixed;/*definindo a posição do elemento como fixa*/
+    width: 100%;/*definindo a largura do elemento para 100% da tela*/
+    bottom: 0;/*posicionando o elemento no final da página*/
+}
+.footer-text{
+    font-size: 25px;/*definindo o tamanho da fonte para 25px*/
+    letter-spacing: 5px;/*adicionando 5px de espaçamento entre as letras*/
+    color: white;/*definindo a cor da fonte como branco*/
+    padding-left: 10%;/*adicionando 10% de padding para a esquerda*/
+}
+.footer-box{
+    display: flex;/*definindo o display como flex*/
+    padding-right: 10%;/*adicionando padding de 10% para a direita*/
+}
+.footer-box-img{
+    width: 50px;/*definindo largura de 50px*/
+    margin-left: 20px;/*adicionando margem de 10px para a esquerda*/
+}

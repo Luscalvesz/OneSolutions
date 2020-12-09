@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One - Home</title>
+    <link rel="stylesheet" href="./assets/css/header.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
+    <link rel="stylesheet" href="./assets/css/home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+</head>
+
+<body class="body">
+    <header class="header">
+        <div class="header-box">
+            <img class="header-box-img" src="./assets/img/logoOne.png" alt="logo">
+        </div>
+        <ul class="header-ul">
+            <a href="./sobre.html">
+                <li class="header-ul-li">sobre</li>
+            </a>
+            <a href="./contato.html">
+                <li class="header-ul-li">contato</li>
+            </a>
+            <a href="./login.html">
+                <li class="header-ul-li">login</li>
+            </a>
+        </ul>
+    </header>
+    <main class="main">
+        <h1 class="main-title">ONE - IOT Solutions</h1>
+        <p class="main-text">Empresa de tecnologia voltada ao controle e monitoramento da temperatura e umidade em data
+            centers</p>
+        <div class="main-box">
+            <img class="main-box-arrow" src="./assets/img/arrow.svg">
+        </div>
+    </main>
+    <section class="data">
+        <div class="data-box">
+            <h2 class="data-box-title">Empresa criada em 2020 voltada para o controle e monitoramento de temperatura e
+                umidade através da nossa pagina da internet e aplicativo. Não perca tempo e faça seu orçamento com a
+                nossa equipe.</h2>
+            <a href="./contato.html"><button class="data-box-button">Fale Conosco</button></a>
+        </div>
+        <img class="data-img" src="./assets/img/bg-data.png" alt="">
+    </section>
+    <section class="thermo">
+        <div class="thermo-box">
+            <h2 class="thermo-box-title">Nosso cliente tem acesso 24 horas por dia, 7 dias na semana onde consegue a
+                distância ligar e desligar o ar condicionado e umidificador melhorando a performance do seu Data Center.
+            </h2>
+            <a href="./sobre.html"><button class="thermo-box-button">Sobre</button></a>
+        </div>
+        <img class="thermo-img" src="./assets/img/thermo.jpg" alt="">
+    </section>
+    <section class="graph">
+        <div class="graph-box">
+            <h2 class="graph-box-title">Através de gráficos, você terá controle total dos dados da temperatura e umidade
+                de seus equipamentos no seu Data Center.</h2>
+            <a href="./login.html"><button class="graph-box-button">Login</button></a>
+        </div>
+        <img class="graph-img" src="./assets/img/graph.png" alt="">
+    </section>
+    <section class="calc">
+        <h2 class="calc-title">Simulador Financeiro One:</h2>
+        <p class="calc-subtitle">Quantos Quilowatts (kWh), os servidores de sua empresa
+            consome por mês?<br>
+            Qual o custo mensal do seu sistema de refrigeração?<br>
+            Previsão mensal de energia e seus custos através do ONE!<br>
+            Faça já sua simulação!
+        </p>
+        <input class="calc-input" id="data" placeholder="Quantos servidores estarão ativos?">
+        <input class="calc-input" id="refri" placeholder="Quantos equipamentos de refrigeração serão utilizados?">
+        <div class="calc-box">
+            <button class="calc-box-button" id="quilo" onclick="consumoEnergia()">Consumo</button>
+            <button class="calc-box-button" id="reais" onclick="custoEnergia()">Custo</button>
+            <button class="calc-box-button" id="conversao" onclick="oneEconomia()">One</button>
+        </div>
+        <div class="calc-resp" id="resultado1"></div>
+        <div class="calc-resp" id="resultado2"></div>
+        <div class="calc-resp" id="resultado3"></div>
+    </section>
+    <section class="news">
+        <div class="news-box">
+            <h2 class="news-box-title">Newsletter!</h2>
+            <p class="news-box-subtitle">insira o email para receber as nossas novidades!</p>
+            <input type="text" class="news-box-input" placeholder="Insira o seu email:">
+            <button class="news-box-button">Enviar</button>
+        </div>
+    </section>
+    <footer class="footer">
+        <p class="footer-text"> One - solutions</p>
+        <div class="footer-box">
+            <img class="footer-box-img" src="./assets/img/github-logo.svg" alt="" class="footer-box">
+            <img class="footer-box-img" src="./assets/img/linkedin.svg" alt="" class="footer-box">
+        </div>
+    </footer>
+</body>
+<script src="./assets/script/script.js"></script>
+</html>
