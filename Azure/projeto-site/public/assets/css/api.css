@@ -94,7 +94,7 @@
     justify-content: space-between;
 }
 .sidenav {
-    height: 90vh;
+    height: auto;
     width: 0px;
     position: relative;
     left: -250px;
@@ -145,8 +145,6 @@
 .alerts-box{
     display: flex;
     margin-bottom: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 .alert-title{
@@ -209,25 +207,20 @@
     display: none;
     flex-direction: column;
     position: fixed;
-    top: 12vh;
+    top: 10vh;
     width: 80%;
     height: 80%;
-    background: #1b1b1b;
+    background: tomato;
     justify-content: center;
     align-items: center;
     border-radius: 25px;
 
 }
-.grafico-primeiro-value{
-    color: white;
-    margin: 35px;
-}
 .grafico-title{
     text-align: center;
     color: white;
     font-size: 25px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    margin-bottom: 25px;
 }
 .grafico-values{
     display: flex;
@@ -236,7 +229,7 @@
 /* histórico */
 .hist{
     position: fixed;
-    width: 55%;
+    width: 50%;
     background: #1d1d1d;
     top: 15vh;
     z-index: 2;
@@ -274,7 +267,7 @@
     display: flex;
     justify-content: space-evenly;
     position: fixed;
-    width: 55%;
+    width: 50%;
     background: #3d3d3d;
     padding: 15px 0;
     border-top-left-radius: 25px;

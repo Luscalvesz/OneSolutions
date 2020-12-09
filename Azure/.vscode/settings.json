@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/9a818115-9510-4689-96ae-a4c86aca890a/resourceGroups/Grupo5-Recursos/providers/Microsoft.Web/sites/onesolutions",
+    "appService.deploySubpath": "."
+}

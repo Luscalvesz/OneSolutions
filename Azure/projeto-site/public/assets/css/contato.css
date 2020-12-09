@@ -1,0 +1,62 @@
+.contato{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+.contato-box{
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #0611457a;
+    border-radius: 25px;
+    padding: 15px 0;
+}
+.contato-title{
+    color: white;
+    text-transform: uppercase;
+} 
+.contato-subtitle{
+    color: white;
+    margin: 25px 0;
+    text-align: center;
+    width: 275px;
+}
+.contato-form{
+    display: flex;
+    flex-direction: column;
+}
+.contato-form-input{
+    width: 250px;
+    margin: 5px 0;
+    padding: 5px;
+    outline: none;
+    border-radius: 25px;
+    border: 2px solid black;
+}
+
+.contato-button{
+    border-radius: 20px;/*arredondando a borda */
+    color: white;/*definindo a cor do texto como branco*/
+    background: darkblue;/*definindo a cor de fundo*/
+    border: 2px solid black;/*criando borda no elemento*/
+    padding: 5px 25px;/*adicionando padding de 5px para cima/baixo e 25px para esquerda/direita */
+    font-size: 20px;/*definindo o tamanho da fonte para 20px*/
+    text-transform: uppercase;/*definindo que o texto vai ser maiúsculo*/
+    letter-spacing: 2px;/*definindo 2px de espaço entre as letras*/
+    cursor: pointer;/*definindo o ponteiro do mouse com a "mãozinha"*/
+    outline: none;/*retirando as "bordas pretas" quando clica no elemento */
+    transition:box-shadow 0.5s, background 0.5s;/*definindo a transição do elemento para 0.5 segundos */
+    margin-top: 25px;
+}
+.contato-button:hover{
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);/*adicionando sombra no elemento */
+    background: #01124152;/*definindo a cor de fundo*/
+}
+
+
+
+
+

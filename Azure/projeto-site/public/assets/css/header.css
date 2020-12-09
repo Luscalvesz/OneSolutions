@@ -1,0 +1,65 @@
+
+*{  /* seletor universal*/
+    margin: 0; /*zerando espaçamento externo*/
+    padding: 0;/*zerando espaçamento interno*/
+    font-family: 'Rajdhani', sans-serif;/*definindo a fonte*/
+    text-decoration: none;/*removendo o underline*/
+}
+.body{
+    height: 100vh;/*definindo o tamando do body para 100% do tamanho DA TELA*/
+    background: url('../img/background.png') no-repeat;/*adcionando imagem de fundo (no-repeat para que a imagem não repita)*/
+    background-size: cover; /*definindo que o tamanho da imagem vai cobrir toda a tela*/
+}
+/* inicio header */
+.header{ 
+    display: flex; /*definindo o display como flex*/
+    align-items: center;/*alinhando verticalmente*/
+    justify-content: space-between;/*alinhando horizontalmente*/
+    height: 10vh; /*definindo o tamanho do header para 10% do tamanho da tela*/
+    position: fixed;/*definindo a posição do elemento como fixa*/
+    width: 100%;/*definindo a largura do elemento como 100%*/
+    background: #000000a3;/*definindo a cor de fundo*/
+}
+.header-box{
+    display: flex; /*definindo o display como flex*/
+    align-items: center;/*alinhando verticalmente*/
+    border-radius: 20px;/*arredondando a borda*/
+    padding-left: 25px;/*adicionando padding esquerdo de 25px*/
+}
+.header-box-img{
+    height: 10vh;/*definindo a altura como 10vh*/
+}
+.header-box-title{
+    font-size: 35px;/*definindo o tamanho da fonte para 35px*/
+    text-transform: uppercase;/*definindo a fonte como maiúscula*/
+    font-weight: 100;/*definindo o peso da fonte como 100*/
+    letter-spacing: 2px;/*adicionando 3px de espaço entre as letras*/
+}
+.header-ul{
+    display: flex;/*definindo o display como flex*/
+    padding-right: 25px; /*adicionando 20px de padding para a direita*/
+}
+.header-ul-li{
+    cursor: pointer; /*definindo o ponteiro do mouse com uma "mãozinha"*/
+    list-style-type: none; /*removendo as "bolinhas" da li*/
+    margin: 0 10px;/*adicionando margin de 10px para esquerda e direita*/
+    color: white;/*definindo a cor do texto como branco*/
+    text-transform: uppercase;/*definindo que a fonte vai ser maiúscula*/
+    font-size: 20px;/*definindo que a fonte vai ter 20px de tamanho*/
+    letter-spacing: 3px;/*adicionando 3px de espaço entre as letras*/
+    transition: 0.5s;/*definindo a transição do elemento para 0.5segundos */
+    border-bottom: 1px solid transparent;/*adicionando uma borda transparente abaixo do elemento*/
+    font-weight: bold;/*colocando a fonte em negrito*/
+}
+.header-ul-li:hover{/*criando um hover */
+    border-bottom: 1px solid white; /*adicionando uma borda branca abaixo do elemento */
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background: blue;
+}
+::-webkit-scrollbar-track{
+    background: black;
+}

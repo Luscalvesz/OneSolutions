@@ -1,0 +1,94 @@
+.main{
+    display: flex;/*definindo o display como flex*/
+    align-items: center;/*alinhando horizontalmente */
+    height: 65vh;/*definindo altura de 90% da tela*/
+    justify-content: center;/*alinhando verticalmente */
+    background: #0611457a;/*definindo a cor de fundo*/
+    width: 60%;/*definindo a largura do elemento*/
+    margin: 0 auto;/*adicionando margem automática para direita/esquerda*/
+    border-radius: 20px;/*arredondando as bordas*/
+}
+.main-box{
+    padding: 50px;/*adicionando padding de 50px para todos os lados*/
+    border-radius: 20px;/*arredondando a borda*/
+}
+.main-title{
+    color: white;/*definindo a cor do texto como branco*/
+    letter-spacing: 2px;/*adicionando 2px de espaço entre as letras */
+    transition: 0.5s;/*definindo a transição do elemento para 0.5segundos*/
+    cursor: default;/*definindo o cursor padrão*/
+    text-align: center;/*alinhando o texto ao centro*/
+    padding-top: 10vh;/*adicionando 10vh de padding para baixo*/
+    font-size: 60px;/*definindo o tamanho da fonte*/
+}
+.main-title:hover{
+    letter-spacing: 4px;/*adicionando 4px de espaço entre as letras*/
+}
+.main-box-title{
+    text-align: center;/*alinhando o texto no centro */
+    text-transform: uppercase;/*definindo a fonte maiúscula*/
+    color: white;/*definindo a cor da fonte como branco*/
+    letter-spacing: 2px;/*definindo 2px de espaçamento entre as letras*/
+    margin-bottom: 10px;/*adicionando 25px de margem para baixo*/
+}
+.main-box-login, .main-box-cad{
+    display: flex;/*definindo o display como flex*/
+    flex-direction: column;/*definindo a direção do display para coluna */
+    justify-content: center;/*alinhando verticalmente */
+    align-items: center;/*alinhando horizontalmente */
+}
+.main-box-text {
+    color: white;
+    font-size: 20px;
+    margin-left: -150px;
+}
+.main-box-text-cad{
+    color: white;
+}
+.main-box-login-input, .main-box-cad-input{
+    margin-bottom: 10px; /*adicionando 10px de margem para cima/baixo */
+    padding: 5px 10px;/*adicionando 5px de padding para cima/baixo e 10 para direita/esquerda */
+    border-radius: 20px;/*arredondando as bordas*/
+    outline: none; /*zerando as bordas*/
+    border: 1px solid black;/*criando uma borda de 1px para todos os lados */
+    width: 200px;/*definindo 200px de largura*/
+}
+.main-box-login-button, .main-box-cad-button{
+    margin-top: 16px;/*adicionando 20px de margem para cima */
+    border-radius: 20px;/*arredondando a borda */
+    color: white;/*definindo a cor do elemento para branco */
+    background: #001a62;/*definindo a cor de fundo do elemento */
+    border: 2px solid black;/*criando uma borda de 2px para todos os lados */
+    width: 100%;/*definindo a largura do elemento com 100% do pai*/
+    padding: 5px 35px;/*adicionando padding de 5px para cima/baixo*/
+    font-size: 15px; /*definindo o tamanho da fonte*/
+    text-transform: uppercase;/*definindo a fonte como maiúscula*/
+    letter-spacing: 2px;/*adicionando espaçamento entre as letras*/
+    cursor: pointer;/*definindo o cursor do mouse como a "mãozinha"*/
+    outline: none;/*retirando as bordas*/
+    transition: 0.5s;/*definindo uma transição de 0.5 segundos*/
+}
+.main-text-p {
+    font-size: 18px;
+    color: white;
+}
+.main-box-login-button:hover, .main-box-cad-button:hover{
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);/*adicionando sombra no elemento*/
+    background: #01124152;/*definindo uma cor de fundo*/
+}
+.main-box-login-text{
+    color: white;/*definindo uma cor da fonte*/
+    margin-top: 20px;/*adicionando uma margem de 20px para cima*/
+}
+.main-box-login-text a{
+    text-transform: uppercase;/*definindo o texto como maiúsculo*/
+    letter-spacing: 2px;/*adicionando 2px de espaçaento entre as letras*/
+    text-decoration: none;/*removendo o underline*/
+}
+.main-box-login-input::-webkit-input-placeholder {
+    color: black;
+}
+#img_aguarde{
+    width: 80px;
+    margin: 0 auto;
+}
